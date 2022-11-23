@@ -78,7 +78,6 @@ def seed_test():
     page2 = Page(
         user_id = "1",
         notebook_id = "2",
-        title = "",
         content = "This is a test with no title and no bookmark."
     )
 
@@ -135,12 +134,12 @@ def seed_test():
     #--------------------------------------------------
     # Scratchpad seeds:
 
-    scratchpad1 = Task(
+    scratchpad1 = Scratchpad(
         user_id = "1",
-        content = "Demo's scratchpad1"
+        content = "Demo's scratchpad"
     )
 
-    scratchpad2 = Task(
+    scratchpad2 = Scratchpad(
         user_id = "2"
     )
 
