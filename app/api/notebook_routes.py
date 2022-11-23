@@ -74,7 +74,7 @@ def create_page(notebook_id):
     # but the CSRF token needs to be added manually:
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    # Runs form validations on recieved data:
+    # Run form validations on recieved data:
     if form.validate_on_submit():
         # Create a new page instance:
         new_page = Page(
