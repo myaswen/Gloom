@@ -9,7 +9,7 @@ class Scratchpad(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    content = db.Column(db.Text(250000), default="", nullable=False)
+    content = db.Column(db.Text, default="", nullable=False)
     updated_at = db.Column(db.DateTime(), default=datetime.utcnow(), nullable=False)
 
     # A scratchpad belongs to a user, a user can have one scratchpad:
