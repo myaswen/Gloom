@@ -15,3 +15,13 @@ class Notebook(db.Model):
 
     # A notebook belongs to a user, a user can have many notebooks:
     user = db.relationship("User", back_populates="notebooks")
+
+    # Method to convert instance data to JSON:
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "userId": self.user_id,
+            "name": self.name,
+            "createdAt": self.created_at,
+            "updatedAt": self.updated_at
+        }
