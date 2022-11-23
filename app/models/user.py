@@ -15,6 +15,21 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     dashboard_image = db.Column(db.String(255), nullable=True)
 
+    # A user can have many pages, a page belongs to a user:
+    pages = db.relationship("Page", back_populates="user", cascade="all, delete-orphan")
+
+    # A user can have many notebooks, a notebook belongs to a user:
+    notebooks = db.relationship("Notebook", back_populates="user", cascade="all, delete-orphan")
+
+    # A user can have many tags, a tag belongs to a user:
+    tags = db.relationship("Tag", back_populates="user", cascade="all, delete-orphan")
+
+    # A user can have many tasks, a task belongs to a user:
+    tasks = db.relationship("Task", back_populates="user", cascade="all, delete-orphan")
+
+    # A user can have one scratchpad, a scratchpad belongs to a user:
+    scratchpad = db.relationship("Scratchpad", uselist=False, back_populates="user", cascade="all, delete-orphan")
+
     @property
     def password(self):
         return self.hashed_password
