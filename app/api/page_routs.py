@@ -14,7 +14,7 @@ page_routes = Blueprint('pages', __name__)
 def get_all_user_pages():
 
     # Get the current user's id:
-    current_user_id = current_user.get_id()
+    current_user_id = int(current_user.get_id())
 
     # Find all the pages that the current user owns,
     # and order them descending by their last edited date:
