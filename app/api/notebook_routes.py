@@ -8,6 +8,34 @@ notebook_routes = Blueprint('notebooks', __name__)
 
 
 # ------------------------------------------------------------
+# Get all of the current user's notebooks:
+# ------------------------------------------------------------
+@notebook_routes.route("")
+@login_required
+def get_all_user_notebooks():
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Find all the notebooks that the current user owns,
+    # and order them descending by their last edited date:
+    notebooks = Notebook.query.filter(Notebook.user_id == current_user_id).order_by(
+        Notebook.updated_at.desc()).all()
+
+    # Set up initial response format:
+    response = {
+        "Notebooks": []
+    }
+
+    # Convert notebooks to dictionaries,
+    # and append each notebook to the response:
+    for notebook in notebooks:
+        response["Notebooks"].append(notebook.to_dict())
+
+    return(response)
+
+
+# ------------------------------------------------------------
 # Get all of the pages in a notebook:
 # ------------------------------------------------------------
 @notebook_routes.route("/<int:notebook_id>/pages")
