@@ -8,7 +8,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.notebook_routes import notebook_routes
-from .api.page_routs import page_routes
+from .api.page_routes import page_routes
 from .api.tag_routes import tag_routes
 from .api.task_routes import task_routes
 from .api.scratchpad_routes import scratchpad_routes

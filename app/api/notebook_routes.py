@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
 from app.models import db, Notebook, Page
 from app.forms.page_form import PageForm
+from app.forms.notebook_form import NotebookForm
 
 notebook_routes = Blueprint('notebooks', __name__)
 
@@ -33,6 +34,37 @@ def get_all_user_notebooks():
         response["Notebooks"].append(notebook.to_dict())
 
     return(response)
+
+
+# ------------------------------------------------------------
+# Create a notebook:
+# ------------------------------------------------------------
+@notebook_routes.route("", methods=['POST'])
+@login_required
+def create_notebook():
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Instantiate form instance for data validation:
+    form = NotebookForm()
+
+    # Data from the request is passed in automatically,
+    # but the CSRF token needs to be added manually:
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    # Run form validations on recieved data:
+    if form.validate_on_submit():
+        # Create a new page instance:
+        new_notebook = Notebook(
+            user_id = current_user_id
+        )
+        db.session.add(new_notebook)
+        db.session.commit()
+        return new_notebook.to_dict(), 201
+
+    # Return response if the form validations fail:
+    return { "errors": form.errors }, 400
 
 
 # ------------------------------------------------------------
