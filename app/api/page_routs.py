@@ -80,3 +80,29 @@ def edit_page(page_id):
 
     # Return response if the form validations fail:
     return { "errors": form.errors }, 400
+
+
+# ------------------------------------------------------------
+# Delete a page:
+# ------------------------------------------------------------
+@page_routes.route("/<int:page_id>", methods=['DELETE'])
+@login_required
+def delete_page(page_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a page with the given id exists:
+    try:
+        current_page = Page.query.get_or_404(page_id)
+    except:
+        return { "errors": { "notFound": "Page not found" } }, 404
+
+    # Check if the current user owns the given page:
+    if (current_page.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this page" } }, 403
+
+    # Delete the page instance:
+    db.session.delete(current_page)
+    db.session.commit()
+    return {"status": "Page successfully deleted"}, 200
