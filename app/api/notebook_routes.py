@@ -1,7 +1,8 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
-from app.models import Notebook, Page
+from app.models import db, Notebook, Page
+from app.forms.page_form import PageForm
 
 notebook_routes = Blueprint('notebooks', __name__)
 
@@ -44,3 +45,49 @@ def get_notebook_pages(notebook_id):
         response["Pages"].append(page_dict)
 
     return(response)
+
+
+# ------------------------------------------------------------
+# Create a page:
+# ------------------------------------------------------------
+@notebook_routes.route("/<int:notebook_id>/pages", methods=['POST'])
+@login_required
+def create_page(notebook_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a notebook with the given id exists:
+    try:
+        notebook = Notebook.query.get_or_404(notebook_id)
+    except:
+        return { "errors": { "notFound": "Notebook not found" } }, 404
+
+    # Check if the current user owns the given notebook:
+    if (notebook.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this notebook" } }, 403
+
+    # Instantiate form instance for data validation:
+    form = PageForm()
+
+    # Data from the request is passed in automatically,
+    # but the CSRF token needs to be added manually:
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    # Runs form validations on recieved data:
+    if form.validate_on_submit():
+        # Create a new page instance:
+        new_page = Page(
+            user_id = current_user_id,
+            notebook_id = notebook_id
+        )
+        db.session.add(new_page)
+        db.session.commit()
+
+        # Format and return the new instance:
+        new_page_dict = new_page.to_dict()
+        new_page_dict["Tags"] = []
+        return new_page_dict, 201
+
+    # Return response if the form validations fail:
+    return { "errors": form.errors }, 400

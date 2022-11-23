@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired, Length
 
 
 class PageForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(), Length(max=50)])
+    title = StringField("Title", validators=[Length(max=50)])
     content = TextAreaField("Content", validators=[Length(max=250000)])
