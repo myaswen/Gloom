@@ -9,7 +9,7 @@ class Task(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    content = db.Column(db.Text(1000), default="", nullable=False)
+    content = db.Column(db.Text, default="", nullable=False)
     complete = db.Column(db.Boolean, default=False, nullable=False)
     due_date = db.Column(db.DateTime(), nullable=True)
     created_at = db.Column(db.DateTime(), default=datetime.utcnow(), nullable=False)
