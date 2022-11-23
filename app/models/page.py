@@ -11,10 +11,13 @@ class Page(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     notebook_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("notebooks.id")), nullable=False)
     bookmarked = db.Column(db.Boolean, default=False, nullable=False)
-    title = db.Column(db.String(50), default="Untitled", nullable=False)
+    title = db.Column(db.String(50), default="Untitled Page", nullable=False)
     content = db.Column(db.Text(250000), default="", nullable=False)
     created_at = db.Column(db.DateTime(), default=datetime.utcnow(), nullable=False)
     updated_at = db.Column(db.DateTime(), default=datetime.utcnow(), nullable=False)
+
+    # A page belongs to a user, a user can have many pages:
+    user = db.relationship("User", back_populates="pages")
 
     # A page belongs to a notebook, a notebook can have many pages:
     notebook = db.relationship("Notebook", back_populates="pages")
