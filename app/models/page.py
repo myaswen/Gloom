@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
+from .page_tag import page_tags
 
 class Page(db.Model):
     __tablename__ = "pages"
@@ -21,6 +22,9 @@ class Page(db.Model):
 
     # A page belongs to a notebook, a notebook can have many pages:
     notebook = db.relationship("Notebook", back_populates="pages")
+
+    # A page can have many tags, a tag can have many pages:
+    tags = db.relationship("Tag", secondary=page_tags, back_populates="pages")
 
     # Method to convert instance data to JSON:
     def to_dict(self):
