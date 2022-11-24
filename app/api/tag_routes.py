@@ -70,3 +70,29 @@ def create_tag():
 
     # Return response if the form validations fail:
     return { "errors": form.errors }, 400
+
+
+# ------------------------------------------------------------
+# Delete a tag:
+# ------------------------------------------------------------
+@tag_routes.route("/<int:tag_id>", methods=['DELETE'])
+@login_required
+def delete_tag(tag_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a tag with the given id exists:
+    try:
+        current_tag = Tag.query.get_or_404(tag_id)
+    except:
+        return { "errors": { "notFound": "Tag not found" } }, 404
+
+    # Check if the current user owns the given tag:
+    if (current_tag.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this tag" } }, 403
+
+    # Delete the tag instance:
+    db.session.delete(current_tag)
+    db.session.commit()
+    return {"status": "Tag successfully deleted"}, 200
