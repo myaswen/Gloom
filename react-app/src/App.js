@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { authenticate } from './store/session';
 
 import SplashPage from './components/SplashPage/SplashPage';
-// import LogoutButton from './components/LogoutButton';
 import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
