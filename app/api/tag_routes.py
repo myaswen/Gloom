@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Tag
+from sqlalchemy.orm import joinedload
+from app.models import db, Tag, Page
 from app.forms.tag_form import TagForm
 tag_routes = Blueprint('tags', __name__)
 
@@ -96,3 +97,45 @@ def delete_tag(tag_id):
     db.session.delete(current_tag)
     db.session.commit()
     return {"status": "Tag successfully deleted"}, 200
+
+
+# ------------------------------------------------------------
+# Get all of the pages that belong to a tag:
+# ------------------------------------------------------------
+@tag_routes.route("/<int:tag_id>/pages")
+@login_required
+def get_tag_pages(tag_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a tag with the given id exists:
+    try:
+        tag = Tag.query.get_or_404(tag_id)
+    except:
+        return { "errors": { "notFound": "Tag not found" } }, 404
+
+    # Check if the current user owns the given tag:
+    if (tag.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this tag" } }, 403
+
+    # Find all the pages that the current user owns,
+    # and order them descending by their last edited date:
+    pages = Page.query.filter(Page.user_id == current_user_id).order_by(
+        Page.updated_at.desc()).options(joinedload(Page.tags)).all()
+
+    # Set up initial response format:
+    response = {
+        "Pages": []
+    }
+
+    # Convert pages (and associated tags) to dictionaries,
+    # and append each page to the response, if the page
+    # has the associated tag:
+    for page in pages:
+        if tag in page.tags:
+            page_dict = page.to_dict()
+            page_dict["Tags"] = [tag.to_dict() for tag in page.tags]
+            response["Pages"].append(page_dict)
+
+    return(response)
