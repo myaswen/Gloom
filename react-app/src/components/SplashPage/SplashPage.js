@@ -11,7 +11,7 @@ const SplashPage = () => {
     const [showSignUp, setShowSignUp] = useState(false);
 
     if (user) {
-        return <Redirect to='/' />;
+        return <Redirect to='/dashboard' />;
     }
 
     return (

@@ -20,7 +20,7 @@ const SignUpCard = () => {
             if (data) {
                 setErrors(data);
             } else {
-                history.push("/");
+                history.push("/dashboard");
             }
         } else {
             setErrors({ password: ["Password fields do not match"] })

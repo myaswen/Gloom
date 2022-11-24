@@ -18,7 +18,7 @@ const LoginCard = ({ setShowSignUp }) => {
         if (data) {
             setErrors(data);
         } else {
-            history.push("/");
+            history.push("/dashboard");
         }
     };
 

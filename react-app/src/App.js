@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authenticate } from './store/session';
 
 import SplashPage from './components/SplashPage/SplashPage';
-import LogoutButton from './components/LogoutButton';
+// import LogoutButton from './components/LogoutButton';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,12 +31,11 @@ function App() {
         </Route>
 
         <Route path='/dashboard' exact={true}>
-          Hi
+          <Dashboard />
         </Route>
 
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
-          <LogoutButton />
+          <Redirect to='/dashboard' />;
         </Route>
 
       </Switch>
