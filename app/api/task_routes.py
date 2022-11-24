@@ -24,13 +24,17 @@ def get_all_user_tasks():
 
     # Set up initial response format:
     response = {
-        "Tasks": []
+        "DueDate": [],
+        "NoDueDate": []
     }
 
     # Convert tasks to dictionaries,
     # and append each task to the response:
     for task in tasks:
-        response["Tasks"].append(task.to_dict())
+        if task.due_date is None:
+            response["NoDueDate"].append(task.to_dict())
+        else:
+            response["DueDate"].append(task.to_dict())
 
     return(response)
 
