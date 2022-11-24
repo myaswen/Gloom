@@ -1,20 +1,10 @@
-#login-page-wrapper {
+#splash-page-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid blue;
     width: 100%;
     height: 100%;
-}
-
-#login-form-wrapper {
-    margin: 20px;
-    min-width: 400px;
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    border: 1px solid red;
 }
 
 #splash-info-wrapper {
@@ -25,7 +15,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-    #login-page-wrapper {
+    #splash-page-wrapper {
         flex-direction: column;
     }
 }
