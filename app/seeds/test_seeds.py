@@ -143,8 +143,13 @@ def seed_test():
         user_id = "2"
     )
 
+    scratchpad3 = Scratchpad(
+        user_id = "3"
+    )
+
     db.session.add(scratchpad1)
     db.session.add(scratchpad2)
+    db.session.add(scratchpad3)
     db.session.commit()
 
 
