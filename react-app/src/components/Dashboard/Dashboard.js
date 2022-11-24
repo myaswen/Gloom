@@ -13,7 +13,7 @@ const Dashboard = () => {
 
     return (
         <div id="dashboard-wrapper">
-            <SideMenu />
+            <SideMenu user={user} />
         <div id="dashboard-content-wrapper">
             <div id="dashboard-bookmarks-wrapper">bookmarks placeholder</div>
             <div id="dashboard-pages-wrapper">pages placeholder</div>
