@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, BooleanField, DateTimeField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import Length
 
 
 class TaskForm(FlaskForm):
-    content = TextAreaField("Content", validators=[DataRequired(), Length(max=1000)])
+    content = TextAreaField("Content", validators=[Length(max=1000)])
     dueDate = DateTimeField("Due Date")
     complete = BooleanField("Complete")
