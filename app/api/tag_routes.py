@@ -58,7 +58,7 @@ def create_tag():
             Tag.name).all()
         for tag in user_tags:
             if tag.name == form.data["name"]:
-                return { "errors": { "unique": "Tag already exists" } }, 400
+                return { "errors": { "unique": "Tag already exists" } }, 403
 
         # Create a new tag instance:
         new_tag = Tag(
