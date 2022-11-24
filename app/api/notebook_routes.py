@@ -108,6 +108,32 @@ def edit_notebook(notebook_id):
 
 
 # ------------------------------------------------------------
+# Delete a notebook:
+# ------------------------------------------------------------
+@notebook_routes.route("/<int:notebook_id>", methods=['DELETE'])
+@login_required
+def delete_notebook(notebook_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a notebook with the given id exists:
+    try:
+        current_notebook = Notebook.query.get_or_404(notebook_id)
+    except:
+        return { "errors": { "notFound": "Notebook not found" } }, 404
+
+    # Check if the current user owns the given notebook:
+    if (current_notebook.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this notebook" } }, 403
+
+    # Delete the notebook instance:
+    db.session.delete(current_notebook)
+    db.session.commit()
+    return {"status": "Notebook successfully deleted"}, 200
+
+
+# ------------------------------------------------------------
 # Get all of the pages in a notebook:
 # ------------------------------------------------------------
 @notebook_routes.route("/<int:notebook_id>/pages")
