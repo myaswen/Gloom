@@ -7,7 +7,7 @@ import "./LoginCard.css";
 
 const LoginCard = ({ setShowSignUp }) => {
     const history = useHistory();
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState({});
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
@@ -17,9 +17,9 @@ const LoginCard = ({ setShowSignUp }) => {
         const data = await dispatch(login(email, password));
         if (data) {
             setErrors(data);
-            console.log(errors);
+        } else {
+            history.push("/");
         }
-        history.push("/");
     };
 
     const updateEmail = (e) => {
@@ -54,6 +54,9 @@ const LoginCard = ({ setShowSignUp }) => {
                     />
                     <button type='submit'>Login</button>
                 </div>
+                {Object.keys(errors).length > 0 && (
+                    <div>Authentication failed</div>
+                )}
             </form>
             <p>Don't have an account?</p>
             <div onClick={() => setShowSignUp(true)}>Create an account</div>
