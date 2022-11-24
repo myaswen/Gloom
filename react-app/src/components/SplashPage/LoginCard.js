@@ -5,7 +5,7 @@ import { login } from '../../store/session';
 import "./LoginCard.css";
 
 
-const LoginCard = () => {
+const LoginCard = ({ setShowSignUp }) => {
     const history = useHistory();
     const [errors, setErrors] = useState([]);
     const [email, setEmail] = useState('');
@@ -55,6 +55,8 @@ const LoginCard = () => {
                     <button type='submit'>Login</button>
                 </div>
             </form>
+            <p>Don't have an account?</p>
+            <div onClick={() => setShowSignUp(true)}>Create an account</div>
         </div>
     );
 };

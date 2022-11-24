@@ -1,0 +1,9 @@
+#signup-form-wrapper {
+    margin: 20px;
+    min-width: 400px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    border: 1px solid red;
+}
