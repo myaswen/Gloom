@@ -142,9 +142,49 @@ def add_page_tag(page_id, tag_id):
     if (tag in current_page.tags):
         return { "errors": { "Duplicate": "Tag already added to this page" } }, 403
 
-
     # Add the tag to the target page:
     current_page.tags.append(tag)
     db.session.commit()
 
     return {"status": "Tag successfully add to page"}, 201
+
+
+# ------------------------------------------------------------
+# Remove a tag from a page:
+# ------------------------------------------------------------
+@page_routes.route("/<int:page_id>/tags/<int:tag_id>", methods=['DELETE'])
+@login_required
+def remove_page_tag(page_id, tag_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a page with the given id exists:
+    try:
+        current_page = Page.query.get_or_404(page_id)
+    except:
+        return { "errors": { "notFound": "Page not found" } }, 404
+
+    # Check if the current user owns the given page:
+    if (current_page.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this page" } }, 403
+
+    # Check if a tag with the given id exists:
+    try:
+        tag = Tag.query.get_or_404(tag_id)
+    except:
+        return { "errors": { "notFound": "Tag not found" } }, 404
+
+    # Check if the current user owns the given tag:
+    if (tag.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this tag" } }, 403
+
+    # Check if the page does not have the tag:
+    if (tag not in current_page.tags):
+        return { "errors": { "Missing": "This page does not have that tag" } }, 403
+
+    # Remove the tag from the target page:
+    current_page.tags.remove(tag)
+    db.session.commit()
+
+    return {"status": "Tag successfully removed from page"}, 200
