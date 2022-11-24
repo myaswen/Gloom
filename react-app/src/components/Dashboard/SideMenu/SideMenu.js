@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../store/session';
 import "./SideMenu.css";
+import NotebooksDropdown from "./NotebooksDropdown";
 
 const SideMenu = ({ user }) => {
 
@@ -19,6 +20,12 @@ const SideMenu = ({ user }) => {
                     <i className="fa-solid fa-gear"></i>
                     <i onClick={onLogout} className="fa-solid fa-right-from-bracket"></i>
                 </div>
+            </div>
+            <div id="nav-wrapper">
+                <div>Home</div>
+                <div>Tasks</div>
+                <NotebooksDropdown />
+                <div>Tags</div>
             </div>
         </div>
     )

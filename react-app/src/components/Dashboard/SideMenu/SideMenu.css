@@ -15,3 +15,8 @@
 #profile-options-wrapper > i {
     margin: 5px;
 }
+
+#nav-wrapper {
+    display: flex;
+    flex-direction: column;
+}

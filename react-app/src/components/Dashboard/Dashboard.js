@@ -14,11 +14,11 @@ const Dashboard = () => {
     return (
         <div id="dashboard-wrapper">
             <SideMenu user={user} />
-        <div id="dashboard-content-wrapper">
-            <div id="dashboard-bookmarks-wrapper">bookmarks placeholder</div>
-            <div id="dashboard-pages-wrapper">pages placeholder</div>
-            <div id="dashboard-scratchpad-wrapper">scratchpad placeholder</div>
-        </div>
+            <div id="dashboard-content-wrapper">
+                <div id="dashboard-bookmarks-wrapper">bookmarks placeholder</div>
+                <div id="dashboard-pages-wrapper">pages placeholder</div>
+                <div id="dashboard-scratchpad-wrapper">scratchpad placeholder</div>
+            </div>
         </div>
     )
 }
