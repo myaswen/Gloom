@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
+from datetime import datetime
 from app.models import db, Notebook, Page
 from app.forms.page_form import PageForm
 from app.forms.notebook_form import NotebookForm
@@ -62,6 +63,45 @@ def create_notebook():
         db.session.add(new_notebook)
         db.session.commit()
         return new_notebook.to_dict(), 201
+
+    # Return response if the form validations fail:
+    return { "errors": form.errors }, 400
+
+
+# ------------------------------------------------------------
+# Edit a notebook:
+# ------------------------------------------------------------
+@notebook_routes.route("/<int:notebook_id>", methods=['PUT'])
+@login_required
+def edit_notebook(notebook_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a notebook with the given id exists:
+    try:
+        current_notebook = Notebook.query.get_or_404(notebook_id)
+    except:
+        return { "errors": { "notFound": "Notebook not found" } }, 404
+
+    # Check if the current user owns the given notebook:
+    if (current_notebook.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this notebook" } }, 403
+
+    # Instantiate form instance for data validation:
+    form = NotebookForm()
+
+    # Data from the request is passed in automatically,
+    # but the CSRF token needs to be added manually:
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    # Run form validations on recieved data:
+    if form.validate_on_submit():
+        # Perform edits to instance data:
+        current_notebook.name = form.data["name"]
+        current_notebook.updated_at = datetime.utcnow()
+        db.session.commit()
+        return current_notebook.to_dict(), 200
 
     # Return response if the form validations fail:
     return { "errors": form.errors }, 400
