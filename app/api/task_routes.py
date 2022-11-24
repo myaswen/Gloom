@@ -107,3 +107,29 @@ def edit_task(task_id):
 
     # Return response if the form validations fail:
     return { "errors": form.errors }, 400
+
+
+# ------------------------------------------------------------
+# Delete a task:
+# ------------------------------------------------------------
+@task_routes.route("/<int:task_id>", methods=['DELETE'])
+@login_required
+def delete_task(task_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a task with the given id exists:
+    try:
+        current_task = Task.query.get_or_404(task_id)
+    except:
+        return { "errors": { "notFound": "Task not found" } }, 404
+
+    # Check if the current user owns the given task:
+    if (current_task.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this task" } }, 403
+
+    # Delete the notebook instance:
+    db.session.delete(current_task)
+    db.session.commit()
+    return {"status": "Task successfully deleted"}, 200
