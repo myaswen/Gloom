@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
+from datetime import datetime
 from app.models import db, Task
 from app.forms.task_form import TaskForm
 
@@ -62,6 +63,47 @@ def create_task():
         db.session.add(new_task)
         db.session.commit()
         return new_task.to_dict(), 201
+
+    # Return response if the form validations fail:
+    return { "errors": form.errors }, 400
+
+
+# ------------------------------------------------------------
+# Edit a task:
+# ------------------------------------------------------------
+@task_routes.route("/<int:task_id>", methods=['PUT'])
+@login_required
+def edit_task(task_id):
+
+    # Get the current user's id:
+    current_user_id = int(current_user.get_id())
+
+    # Check if a task with the given id exists:
+    try:
+        current_task = Task.query.get_or_404(task_id)
+    except:
+        return { "errors": { "notFound": "Task not found" } }, 404
+
+    # Check if the current user owns the given task:
+    if (current_task.user_id != current_user_id):
+        return { "errors": { "Forbidden": "User is not authorized to access this task" } }, 403
+
+    # Instantiate form instance for data validation:
+    form = TaskForm()
+
+    # Data from the request is passed in automatically,
+    # but the CSRF token needs to be added manually:
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    # Run form validations on recieved data:
+    if form.validate_on_submit():
+        # Perform edits to instance data:
+        current_task.content = form.data["content"]
+        current_task.due_date = form.data["dueDate"]
+        current_task.complete = form.data["complete"]
+        current_task.updated_at = datetime.utcnow()
+        db.session.commit()
+        return current_task.to_dict(), 200
 
     # Return response if the form validations fail:
     return { "errors": form.errors }, 400
