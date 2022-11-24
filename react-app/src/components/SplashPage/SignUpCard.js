@@ -6,7 +6,7 @@ import "./SignUpCard.css";
 
 const SignUpCard = () => {
     const history = useHistory();
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState({});
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,9 +19,11 @@ const SignUpCard = () => {
             const data = await dispatch(signUp(username, email, password));
             if (data) {
                 setErrors(data);
-                console.log(errors);
+            } else {
+                history.push("/");
             }
-            history.push("/");
+        } else {
+            setErrors({ password: ["Password fields do not match"] })
         }
     };
 
@@ -52,6 +54,9 @@ const SignUpCard = () => {
                         onChange={updateUsername}
                         value={username}
                     ></input>
+                    {errors.username && (
+                        <div>{errors.username[0]}</div>
+                    )}
                 </div>
                 <div>
                     <label>Email</label>
@@ -61,6 +66,9 @@ const SignUpCard = () => {
                         onChange={updateEmail}
                         value={email}
                     ></input>
+                    {errors.email && (
+                        <div>{errors.email[0]}</div>
+                    )}
                 </div>
                 <div>
                     <label>Password</label>
@@ -80,6 +88,9 @@ const SignUpCard = () => {
                         value={repeatPassword}
                         required={true}
                     ></input>
+                    {errors.password && (
+                        <div>{errors.password[0]}</div>
+                    )}
                 </div>
                 <button type='submit'>Sign Up</button>
             </form>
