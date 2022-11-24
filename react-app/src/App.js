@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { authenticate } from './store/session';
 
 import SplashPage from './components/SplashPage/SplashPage';
-import LogoutButton from './components/auth/LogoutButton';
+import LogoutButton from './components/LogoutButton';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -23,11 +23,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <NavBar /> */}
       <Switch>
 
         <Route path='/authenticate' exact={true}>
           <SplashPage />
+        </Route>
+
+        <Route path='/dashboard' exact={true}>
+          Hi
         </Route>
 
         <Route path='/' exact={true} >
