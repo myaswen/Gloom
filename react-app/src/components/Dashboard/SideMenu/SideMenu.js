@@ -17,15 +17,15 @@ const SideMenu = ({ user, setViewSelection }) => {
             <div id="profile-wrapper">
                 <div>{user.username}</div>
                 <div id="profile-options-wrapper">
-                    <i className="fa-solid fa-gear"></i>
-                    <i onClick={onLogout} className="fa-solid fa-right-from-bracket"></i>
+                    {/* <i className="fa-solid fa-gear clickable"></i> */}
+                    <i onClick={onLogout} className="fa-solid fa-right-from-bracket clickable"></i>
                 </div>
             </div>
             <div id="nav-wrapper">
-                <div onClick={() => setViewSelection("dashboard")}>Home</div>
-                <div>Tasks</div>
+                <div onClick={() => setViewSelection("dashboard")} className="clickable">Home</div>
+                {/* <div>Tasks</div> */}
                 <NotebooksDropdown setViewSelection={setViewSelection} />
-                <div>Tags</div>
+                {/* <div>Tags</div> */}
             </div>
         </div>
     )

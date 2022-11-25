@@ -26,11 +26,11 @@ const NotebooksDropdown = ({ setViewSelection }) => {
 
     return (
         <div id="notebooks-dropdown-wrapper">
-            <div onClick={() => setShowNotebooks(!showNotebooks)}>Notebooks</div>
+            <div onClick={() => setShowNotebooks(!showNotebooks)} className="clickable">Notebooks</div>
             {showNotebooks && (
                 <div id="notebooks-dropdown-list">
                     {Object.keys(notebooks).map(notebookId => (
-                        <div onClick={() => selectNotebook(notebookId)} key={notebookId}>{notebooks[notebookId].name}</div>
+                        <div className="clickable" onClick={() => selectNotebook(notebookId)} key={notebookId}>{notebooks[notebookId].name}</div>
                     ))}
                 </div>
             )}

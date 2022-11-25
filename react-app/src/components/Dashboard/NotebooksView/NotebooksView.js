@@ -27,7 +27,7 @@ const NotebooksView = () => {
                 <div id="notebook-options">
                     <div>{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
                     <div>
-                        <i className="fa-solid fa-square-plus"></i>
+                        <i className="fa-solid fa-square-plus clickable"></i>
                     </div>
                 </div>
             </div>
