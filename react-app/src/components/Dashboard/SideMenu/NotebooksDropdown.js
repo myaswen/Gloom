@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TH_getNotebooks } from "../../../store/notebook";
+import { TH_getNotebookPages } from "../../../store/page";
 import "./NotebooksDropdown.css";
 
 const NotebooksDropdown = ({ setViewSelection }) => {
@@ -18,13 +19,18 @@ const NotebooksDropdown = ({ setViewSelection }) => {
 
     if (!loaded) return null;
 
+    const selectNotebook = async (notebookId) => {
+        await dispatch(TH_getNotebookPages(notebookId));
+        setViewSelection("notebooks");
+    }
+
     return (
         <div id="notebooks-dropdown-wrapper">
             <div onClick={() => setShowNotebooks(!showNotebooks)}>Notebooks</div>
             {showNotebooks && (
                 <div id="notebooks-dropdown-list">
                     {Object.keys(notebooks).map(notebookId => (
-                        <div onClick={() => setViewSelection("notebooks")} key={notebookId}>{notebooks[notebookId].name}</div>
+                        <div onClick={() => selectNotebook(notebookId)} key={notebookId}>{notebooks[notebookId].name}</div>
                     ))}
                 </div>
             )}
