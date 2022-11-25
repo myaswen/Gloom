@@ -1,0 +1,22 @@
+#sidemenu-wrapper {
+    border: 3px solid turquoise;
+    min-width: 256px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-wrapper {
+    border: 3px solid rgb(64, 77, 224);
+    display: flex;
+    justify-content: space-between;
+}
+
+#profile-options-wrapper > i {
+    margin: 5px;
+}
+
+#nav-wrapper {
+    display: flex;
+    flex-direction: column;
+}
