@@ -4,24 +4,24 @@ import { TH_getNotebookPages } from "../../../store/page";
 import "./NotebooksView.css";
 
 const NotebooksView = () => {
-    // const dispatch = useDispatch();
-    const notebookPages = useSelector(state => state.pages.notebook)
-    // const [loaded, setLoaded] = useState(false);
+    const dispatch = useDispatch();
+    const currentNotebook = useSelector(state => state.notebooks.current);
+    const notebookPages = useSelector(state => state.pages.notebook);
+    const [loaded, setLoaded] = useState(false);
 
-    // useEffect(() => {
-    //     (async() => {
-    //         await dispatch(TH_getNotebookPages());
-    //         setLoaded(true);
-    //     })();
-    // }, [dispatch]);
+    useEffect(() => {
+        (async() => {
+            await dispatch(TH_getNotebookPages(currentNotebook.id));
+            setLoaded(true);
+        })();
+    }, [dispatch, currentNotebook]);
 
-    // if (!loaded) return null;
-
-    console.log("NOTEBOOK PAGES FROM NOTEBOOKS VIEW: ", notebookPages);
+    if (!loaded) return null;
 
     return (
         <div id="notebooksView-wrapper">
             <p>Hello from notebooks view!</p>
+            <div>{currentNotebook.name}</div>
             <div id="notebook-pages-list">
                 {Object.keys(notebookPages).map(pageId => (
                     <div key={pageId}>{notebookPages[pageId].title}</div>

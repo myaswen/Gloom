@@ -4,6 +4,7 @@ import normalize from "../utils/normalize";
 // Action constants:
 //----------------------------------------
 const GET_NOTEBOOKS = "notebooks/getNotebooks";
+const SET_CURRENT_NOTEBOOK = "notebooks/setCurrent";
 
 
 //----------------------------------------
@@ -13,6 +14,13 @@ export const AC_getNotebooks = (notebooks) => {
     return {
         type: GET_NOTEBOOKS,
         payload: notebooks
+    }
+}
+
+export const AC_setCurrentNotebook = (notebookData) => {
+    return {
+        type: SET_CURRENT_NOTEBOOK,
+        payload: notebookData
     }
 }
 
@@ -37,10 +45,15 @@ export const TH_getNotebooks = () => async (dispatch) => {
     }
 }
 
+export const TH_setCurrentNotebook = (notebookData) => (dispatch) => {
+    dispatch(AC_setCurrentNotebook(notebookData));
+}
+
 
 // Initial state:
 const initialState = {
-    notebooks: {}
+    all: {},
+    current: {}
 }
 
 // Reducer:
@@ -50,7 +63,12 @@ const notebookReducer = (state = initialState, action) => {
         case GET_NOTEBOOKS:
             // Assign newState to a normalized version of
             // the data returned by the fetch:
-            newState = normalize(action.payload.Notebooks);
+            newState = state;
+            newState.all = normalize(action.payload.Notebooks);
+            return newState;
+        case SET_CURRENT_NOTEBOOK:
+            newState = state;
+            newState.current = action.payload;
             return newState;
         default:
             return state;

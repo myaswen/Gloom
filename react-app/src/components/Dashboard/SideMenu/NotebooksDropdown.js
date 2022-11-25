@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TH_getNotebooks } from "../../../store/notebook";
-import { TH_getNotebookPages } from "../../../store/page";
+import { TH_setCurrentNotebook } from "../../../store/notebook";
 import "./NotebooksDropdown.css";
 
 const NotebooksDropdown = ({ setViewSelection }) => {
     const dispatch = useDispatch();
-    const notebooks = useSelector(state => state.notebooks);
+    const notebooks = useSelector(state => state.notebooks.all);
     const [loaded, setLoaded] = useState(false);
     const [showNotebooks, setShowNotebooks] = useState(false);
 
@@ -20,7 +20,7 @@ const NotebooksDropdown = ({ setViewSelection }) => {
     if (!loaded) return null;
 
     const selectNotebook = async (notebookId) => {
-        await dispatch(TH_getNotebookPages(notebookId));
+        await dispatch(TH_setCurrentNotebook(notebooks[notebookId]));
         setViewSelection("notebooks");
     }
 
