@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { TH_getNotebooks } from "../../../store/notebook";
 import "./NotebooksDropdown.css";
 
-const NotebooksDropdown = () => {
+const NotebooksDropdown = ({ setViewSelection }) => {
     const dispatch = useDispatch();
     const notebooks = useSelector(state => state.notebooks);
     const [loaded, setLoaded] = useState(false);
@@ -24,7 +24,7 @@ const NotebooksDropdown = () => {
             {showNotebooks && (
                 <div id="notebooks-dropdown-list">
                     {Object.keys(notebooks).map(notebookId => (
-                        <div key={notebookId}>{notebooks[notebookId].name}</div>
+                        <div onClick={() => setViewSelection("notebooks")} key={notebookId}>{notebooks[notebookId].name}</div>
                     ))}
                 </div>
             )}

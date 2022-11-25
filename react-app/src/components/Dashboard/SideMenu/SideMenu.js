@@ -4,7 +4,7 @@ import { logout } from '../../../store/session';
 import "./SideMenu.css";
 import NotebooksDropdown from "./NotebooksDropdown";
 
-const SideMenu = ({ user }) => {
+const SideMenu = ({ user, setViewSelection }) => {
 
     // Log out function:
     const dispatch = useDispatch()
@@ -22,9 +22,9 @@ const SideMenu = ({ user }) => {
                 </div>
             </div>
             <div id="nav-wrapper">
-                <div>Home</div>
+                <div onClick={() => setViewSelection("dashboard")}>Home</div>
                 <div>Tasks</div>
-                <NotebooksDropdown />
+                <NotebooksDropdown setViewSelection={setViewSelection} />
                 <div>Tags</div>
             </div>
         </div>
