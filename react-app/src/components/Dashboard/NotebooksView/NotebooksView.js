@@ -10,7 +10,7 @@ const NotebooksView = () => {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        (async() => {
+        (async () => {
             await dispatch(TH_getNotebookPages(currentNotebook.id));
             setLoaded(true);
         })();
@@ -18,10 +18,19 @@ const NotebooksView = () => {
 
     if (!loaded) return null;
 
+    let notebookPageCount = Object.keys(notebookPages).length;
+
     return (
         <div id="notebooksView-wrapper">
-            <p>Hello from notebooks view!</p>
-            <div>{currentNotebook.name}</div>
+            <div id="notebook-details-wrapper">
+                <div>{currentNotebook.name}</div>
+                <div id="notebook-options">
+                    <div>{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
+                    <div>
+                        <i className="fa-solid fa-square-plus"></i>
+                    </div>
+                </div>
+            </div>
             <div id="notebook-pages-list">
                 {Object.keys(notebookPages).map(pageId => (
                     <div key={pageId}>{notebookPages[pageId].title}</div>
