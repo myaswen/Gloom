@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { TH_getNotebookPages } from "../../../store/page";
-import { TH_getNotebookPages } from "../../store/page";
+
 import "./NotebooksView.css";
+import { TH_getNotebookPages } from "../../store/page";
 import DeleteNotebookView from "./DeleteNotebookView";
 
 const NotebooksView = () => {
     const dispatch = useDispatch();
+
     const currentNotebook = useSelector(state => state.notebooks.current);
     const notebookPages = useSelector(state => state.pages.notebook);
+
     const [loaded, setLoaded] = useState(false);
     const [showDeleteView, setShowDeleteView] = useState(false);
 

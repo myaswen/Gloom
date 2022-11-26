@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import "./DeleteNotebookView.css";
 
 const DeleteNotebookView = ({ currentNotebook }) => {

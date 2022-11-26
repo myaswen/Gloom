@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import { logout } from '../../store/session';
+
 import "./SideMenu.css";
+import { logout } from '../../store/session';
 import NotebooksDropdown from "./NotebooksDropdown";
 
 const SideMenu = ({ user }) => {
     const history = useHistory();
-
 
     // Log out function:
     const dispatch = useDispatch()
@@ -19,6 +19,7 @@ const SideMenu = ({ user }) => {
 
     return (
         <div id="sidemenu-wrapper">
+
             <div id="profile-wrapper">
                 <div>{user.username}</div>
                 <div id="profile-options-wrapper">
@@ -26,10 +27,12 @@ const SideMenu = ({ user }) => {
                     <i onClick={onLogout} className="fa-solid fa-right-from-bracket clickable"></i>
                 </div>
             </div>
+
             <div id="nav-wrapper">
                 <div onClick={() => history.push("/dashboard")} className="clickable">Home</div>
                 <NotebooksDropdown />
             </div>
+
         </div>
     )
 }

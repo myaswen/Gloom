@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-// import { TH_getNotebooks } from "../../../store/notebook";
-import { TH_getNotebooks } from "../../store/notebook"
-// import { TH_setCurrentNotebook } from "../../../store/notebook";
-import { TH_setCurrentNotebook } from "../../store/notebook";
-// import { TH_createNotebook } from "../../../store/notebook";
-import { TH_createNotebook } from "../../store/notebook";
-import "./NotebooksDropdown.css";
 
-const NotebooksDropdown = ({ setViewSelection }) => {
+import "./NotebooksDropdown.css";
+import { TH_getNotebooks } from "../../store/notebook"
+import { TH_setCurrentNotebook } from "../../store/notebook";
+import { TH_createNotebook } from "../../store/notebook";
+
+const NotebooksDropdown = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+
     const notebooks = useSelector(state => state.notebooks.all);
+
     const [loaded, setLoaded] = useState(false);
     const [showNotebooks, setShowNotebooks] = useState(false);
 
@@ -27,19 +27,19 @@ const NotebooksDropdown = ({ setViewSelection }) => {
 
     const selectNotebook = async (notebookId) => {
         await dispatch(TH_setCurrentNotebook(notebooks[notebookId]));
-        // setViewSelection("notebooks");
         history.push(`/notebooks/${notebookId}`);
     }
 
     const createNewNotebook = async () => {
         const newNotebook = await dispatch(TH_createNotebook());
-        // setViewSelection("notebooks");
         history.push(`/notebooks/${newNotebook.id}`);
     }
 
     return (
         <div id="notebooks-dropdown-wrapper">
+
             <div onClick={() => setShowNotebooks(!showNotebooks)} className="clickable">Notebooks</div>
+
             {showNotebooks && (
                 <div id="notebooks-dropdown-list">
                     {Object.keys(notebooks).map(notebookId => (
@@ -50,6 +50,7 @@ const NotebooksDropdown = ({ setViewSelection }) => {
                     </div>
                 </div>
             )}
+
         </div>
     )
 }
