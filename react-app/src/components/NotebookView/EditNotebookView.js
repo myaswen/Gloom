@@ -1,15 +1,25 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { TH_editNotebook } from "../../store/notebook";
 
 import "./EditNotebookView.css";
 
 const EditNotebookView = ({ currentNotebook }) => {
+    const dispatch = useDispatch();
+
     const [name, setName] = useState(currentNotebook.name);
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState({});
 
     const editNotebook = async () => {
-        const editData = { name }
-        console.log("Edit Data: ", editData);
+        const editData = { name };
+
+        const response = await dispatch(TH_editNotebook(currentNotebook.id, editData));
+        if (response.errors) {
+            setErrors(response.errors);
+        } else {
+            console.log("EDITED NOTEBOOK RETURNED: ", response);
+        }
     }
 
     return (
@@ -20,8 +30,8 @@ const EditNotebookView = ({ currentNotebook }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             />
-            {errors.length > 0 && (
-                <div>{errors[0]}</div>
+            {errors.name && (
+                <div>{errors.name[0]}</div>
             )}
             <div onClick={editNotebook} className="clickable">Submit</div>
         </div>

@@ -69,7 +69,7 @@ const NotebookView = () => {
             )}
 
             {showEditView && (
-                <EditNotebookView currentNotebook={currentNotebook} />
+                <EditNotebookView currentNotebook={currentNotebook} setShowEditView={setShowEditView} />
             )}
 
         </div>

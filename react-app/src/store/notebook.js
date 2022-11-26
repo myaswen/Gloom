@@ -6,6 +6,7 @@ import normalize from "../utils/normalize";
 const GET_NOTEBOOKS = "notebooks/getNotebooks";
 const CREATE_NOTEBOOK = "notebooks/create";
 const DELETE_NOTEBOOK = "notebooks/delete";
+const EDIT_NOTEBOOK = "notebooks/edit";
 
 
 //----------------------------------------
@@ -31,6 +32,14 @@ export const AC_deleteNotebook = (notebookId) => {
         payload: notebookId
     }
 }
+
+export const AC_editNotebook = (editedNotebook) => {
+    return {
+        type: EDIT_NOTEBOOK,
+        payload: editedNotebook
+    }
+}
+
 
 //----------------------------------------
 // Thunks:
@@ -74,6 +83,23 @@ export const TH_deleteNotebook = (notebookId) => async (dispatch) => {
     }
 }
 
+export const TH_editNotebook = (notebookId, editData) => async (dispatch) => {
+    const response = await fetch(`/api/notebooks/${notebookId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editData)
+    });
+
+    if (response.ok) {
+        const editedNotebook = await response.json();
+        await dispatch(AC_editNotebook(editedNotebook));
+        return editedNotebook;
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+}
+
 
 // Initial state:
 const initialState = {};
@@ -94,6 +120,10 @@ const notebookReducer = (state = initialState, action) => {
         case DELETE_NOTEBOOK:
             newState = { ...state };
             delete newState[action.payload];
+            return newState;
+        case EDIT_NOTEBOOK:
+            newState = { ...state };
+            newState[action.payload.id] = action.payload;
             return newState;
         default:
             return state;
