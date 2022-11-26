@@ -58,7 +58,9 @@ def create_notebook():
     if form.validate_on_submit():
         # Create a new page instance:
         new_notebook = Notebook(
-            user_id = current_user_id
+            user_id = current_user_id,
+            created_at = datetime.utcnow(),
+            updated_at = datetime.utcnow()
         )
         db.session.add(new_notebook)
         db.session.commit()
@@ -205,7 +207,9 @@ def create_page(notebook_id):
         # Create a new page instance:
         new_page = Page(
             user_id = current_user_id,
-            notebook_id = notebook_id
+            notebook_id = notebook_id,
+            created_at = datetime.utcnow(),
+            updated_at = datetime.utcnow()
         )
         db.session.add(new_page)
         db.session.commit()
