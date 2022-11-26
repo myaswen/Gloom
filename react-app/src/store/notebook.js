@@ -62,8 +62,9 @@ export const TH_createNotebook = () => async (dispatch) => {
     });
 
     if (response.ok) {
-        const data = await response.json();
-        await dispatch(AC_createNotebook(data));
+        const newNotebook = await response.json();
+        await dispatch(AC_createNotebook(newNotebook));
+        return newNotebook;
     }
 }
 

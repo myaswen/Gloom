@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { TH_getNotebooks } from "../../../store/notebook";
-import { TH_setCurrentNotebook } from "../../../store/notebook";
-import { TH_createNotebook } from "../../../store/notebook";
+// import { TH_getNotebooks } from "../../../store/notebook";
+import { TH_getNotebooks } from "../../store/notebook"
+// import { TH_setCurrentNotebook } from "../../../store/notebook";
+import { TH_setCurrentNotebook } from "../../store/notebook";
+// import { TH_createNotebook } from "../../../store/notebook";
+import { TH_createNotebook } from "../../store/notebook";
 import "./NotebooksDropdown.css";
 
 const NotebooksDropdown = ({ setViewSelection }) => {
@@ -29,8 +32,9 @@ const NotebooksDropdown = ({ setViewSelection }) => {
     }
 
     const createNewNotebook = async () => {
-        await dispatch(TH_createNotebook());
-        setViewSelection("notebooks");
+        const newNotebook = await dispatch(TH_createNotebook());
+        // setViewSelection("notebooks");
+        history.push(`/notebooks/${newNotebook.id}`);
     }
 
     return (

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import SideMenu from "./SideMenu/SideMenu";
+// import SideMenu from "./SideMenu/SideMenu";
 import "./Dashboard.css";
-import NotebooksView from "./NotebooksView/NotebooksView";
+// import NotebooksView from "./NotebooksView/NotebooksView";
 
 const Dashboard = () => {
     // const user = useSelector(state => state.session.user);

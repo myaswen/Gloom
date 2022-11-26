@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TH_getNotebookPages } from "../../../store/page";
+// import { TH_getNotebookPages } from "../../../store/page";
+import { TH_getNotebookPages } from "../../store/page";
 import "./NotebooksView.css";
 import DeleteNotebookView from "./DeleteNotebookView";
 

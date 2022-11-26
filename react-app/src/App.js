@@ -6,8 +6,10 @@ import "./App.css";
 
 import SplashPage from './components/SplashPage/SplashPage';
 import Dashboard from './components/Dashboard/Dashboard';
-import SideMenu from './components/Dashboard/SideMenu/SideMenu';
-import NotebooksView from './components/Dashboard/NotebooksView/NotebooksView';
+// import SideMenu from './components/Dashboard/SideMenu/SideMenu';
+// import NotebooksView from './components/Dashboard/NotebooksView/NotebooksView';
+import SideMenu from './components/SideMenu/SideMenu';
+import NotebooksView from './components/NotebooksView/NotebooksView';
 
 function App() {
   const user = useSelector(state => state.session.user);
