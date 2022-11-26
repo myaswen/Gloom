@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import SideMenu from './components/SideMenu/SideMenu';
 import NotebookView from './components/NotebookView/NotebookView';
 import NotFound from './components/NotFound/NotFound';
+import PageView from './components/PageView/PageView';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,14 @@ function App() {
 
         <Route path='/' exact={true} >
           <Redirect to='/dashboard' />;
+        </Route>
+
+        <Route path='/notebooks/:notebookId/pages/:pageId'>
+          <div id='route-wrapper'>
+            <SideMenu user={user} />
+            <NotebookView />
+            <PageView />
+          </div>
         </Route>
 
         <Route path='/notebooks/:notebookId'>

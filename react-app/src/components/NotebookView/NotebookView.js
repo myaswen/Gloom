@@ -43,10 +43,14 @@ const NotebookView = () => {
     }
 
     const createPage = async () => {
-        console.log(`I am creating a page for notebook: ${notebookId}`);
+        setShowEditView(false);
+        setShowDeleteView(false);
         const newNotebookPage = await dispatch(TH_createNotebookPage(notebookId));
-        console.log("NEW NOTEBOOK PAGE: ", newNotebookPage);
         history.push(`/notebooks/${notebookId}/pages/${newNotebookPage.id}`);
+    }
+
+    const selectPage = (pageId) => {
+        history.push(`/notebooks/${notebookId}/pages/${pageId}`)
     }
 
     return (
@@ -67,7 +71,7 @@ const NotebookView = () => {
             {!showDeleteView && !showEditView && (
                 <div id="notebook-pages-list">
                     {Object.keys(notebookPages).map(pageId => (
-                        <div key={pageId}>{notebookPages[pageId].title}</div>
+                        <div className="clickable dropdown-page" onClick={() => selectPage(pageId)} key={pageId}>{notebookPages[pageId].title}</div>
                     ))}
                 </div>
             )}
