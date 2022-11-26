@@ -1,16 +1,21 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
+import { Redirect, useHistory } from 'react-router-dom';
 import { logout } from '../../../store/session';
 import "./SideMenu.css";
 import NotebooksDropdown from "./NotebooksDropdown";
 
-const SideMenu = ({ user, setViewSelection }) => {
+const SideMenu = ({ user }) => {
+    const history = useHistory();
+
 
     // Log out function:
     const dispatch = useDispatch()
     const onLogout = async (e) => {
         await dispatch(logout());
     };
+
+    if (!user) return <Redirect to='/authenticate' />;
 
     return (
         <div id="sidemenu-wrapper">
@@ -22,10 +27,8 @@ const SideMenu = ({ user, setViewSelection }) => {
                 </div>
             </div>
             <div id="nav-wrapper">
-                <div onClick={() => setViewSelection("dashboard")} className="clickable">Home</div>
-                {/* <div>Tasks</div> */}
-                <NotebooksDropdown setViewSelection={setViewSelection} />
-                {/* <div>Tags</div> */}
+                <div onClick={() => history.push("/dashboard")} className="clickable">Home</div>
+                <NotebooksDropdown />
             </div>
         </div>
     )

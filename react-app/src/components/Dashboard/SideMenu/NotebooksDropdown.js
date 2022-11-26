@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { TH_getNotebooks } from "../../../store/notebook";
 import { TH_setCurrentNotebook } from "../../../store/notebook";
 import { TH_createNotebook } from "../../../store/notebook";
 import "./NotebooksDropdown.css";
 
 const NotebooksDropdown = ({ setViewSelection }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const notebooks = useSelector(state => state.notebooks.all);
     const [loaded, setLoaded] = useState(false);
@@ -22,7 +24,8 @@ const NotebooksDropdown = ({ setViewSelection }) => {
 
     const selectNotebook = async (notebookId) => {
         await dispatch(TH_setCurrentNotebook(notebooks[notebookId]));
-        setViewSelection("notebooks");
+        // setViewSelection("notebooks");
+        history.push(`/notebooks/${notebookId}`);
     }
 
     const createNewNotebook = async () => {
