@@ -7,7 +7,7 @@ const DeleteNotebookView = ({ currentNotebook }) => {
     const [errors, setErrors] = useState([]);
 
     const deleteNotebook = () => {
-        if (confirmationText === currentNotebook.name) {
+        if (confirmationText === currentNotebook?.name) {
             console.log("########## IT SHALL BE DONE!")
         } else {
             setErrors(["Confirmation does not match"])
@@ -16,8 +16,8 @@ const DeleteNotebookView = ({ currentNotebook }) => {
 
     return (
         <div id="delete-notebook-view-wrapper">
-            <div>Are you sure you want to delete the following notebook: {currentNotebook.name}?</div>
-            <div>Please enter "{currentNotebook.name}" to confirm:</div>
+            <div>Are you sure you want to delete the following notebook: {currentNotebook?.name}?</div>
+            <div>Please enter "{currentNotebook?.name}" to confirm:</div>
             <input
             type="text"
             value={confirmationText}

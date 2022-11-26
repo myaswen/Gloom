@@ -4,7 +4,6 @@ import normalize from "../utils/normalize";
 // Action constants:
 //----------------------------------------
 const GET_NOTEBOOKS = "notebooks/getNotebooks";
-const SET_CURRENT_NOTEBOOK = "notebooks/setCurrent";
 const CREATE_NOTEBOOK = "notebooks/create";
 
 
@@ -15,13 +14,6 @@ export const AC_getNotebooks = (notebooks) => {
     return {
         type: GET_NOTEBOOKS,
         payload: notebooks
-    }
-}
-
-export const AC_setCurrentNotebook = (notebookData) => {
-    return {
-        type: SET_CURRENT_NOTEBOOK,
-        payload: notebookData
     }
 }
 
@@ -52,10 +44,6 @@ export const TH_getNotebooks = () => async (dispatch) => {
     }
 }
 
-export const TH_setCurrentNotebook = (notebookData) => (dispatch) => {
-    dispatch(AC_setCurrentNotebook(notebookData));
-}
-
 export const TH_createNotebook = () => async (dispatch) => {
     const response = await fetch(`/api/notebooks`, {
         method: "POST"
@@ -70,10 +58,7 @@ export const TH_createNotebook = () => async (dispatch) => {
 
 
 // Initial state:
-const initialState = {
-    all: {},
-    current: {}
-}
+const initialState = {};
 
 // Reducer:
 const notebookReducer = (state = initialState, action) => {
@@ -82,18 +67,12 @@ const notebookReducer = (state = initialState, action) => {
         case GET_NOTEBOOKS:
             // Assign newState to a normalized version of
             // the data returned by the fetch:
-            newState = { ...state };
-            newState.all = normalize(action.payload.Notebooks);
-            return newState;
-        case SET_CURRENT_NOTEBOOK:
-            newState = { ...state };
-            newState.current = action.payload;
+            // newState = { ...state };
+            newState = normalize(action.payload.Notebooks);
             return newState;
         case CREATE_NOTEBOOK:
             newState = { ...state };
-            newState.all = { ...state.all };
-            newState.all[action.payload.id] = action.payload;
-            newState.current = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         default:
             return state;

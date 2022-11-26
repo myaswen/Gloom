@@ -4,29 +4,23 @@ import { useHistory } from "react-router-dom";
 
 import "./NotebooksDropdown.css";
 import { TH_getNotebooks } from "../../store/notebook"
-import { TH_setCurrentNotebook } from "../../store/notebook";
 import { TH_createNotebook } from "../../store/notebook";
 
 const NotebooksDropdown = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const notebooks = useSelector(state => state.notebooks.all);
+    const notebooks = useSelector(state => state.notebooks);
 
-    const [loaded, setLoaded] = useState(false);
     const [showNotebooks, setShowNotebooks] = useState(false);
 
     useEffect(() => {
         (async () => {
             await dispatch(TH_getNotebooks());
-            setLoaded(true);
         })();
     }, [dispatch]);
 
-    if (!loaded) return null;
-
     const selectNotebook = async (notebookId) => {
-        await dispatch(TH_setCurrentNotebook(notebooks[notebookId]));
         history.push(`/notebooks/${notebookId}`);
     }
 

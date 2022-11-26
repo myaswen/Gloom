@@ -10,11 +10,10 @@ const NotebookView = () => {
     const dispatch = useDispatch();
     const { notebookId } = useParams();
 
-    const notebooks = useSelector(state => state.notebooks.all);
+    const notebooks = useSelector(state => state.notebooks);
     const currentNotebook = notebooks[notebookId];
     const notebookPages = useSelector(state => state.pages.notebook);
 
-    const [loaded, setLoaded] = useState(false);
     const [showDeleteView, setShowDeleteView] = useState(false);
 
     useEffect(() => {
@@ -24,11 +23,8 @@ const NotebookView = () => {
     useEffect(() => {
         (async () => {
             await dispatch(TH_getNotebookPages(notebookId));
-            setLoaded(true);
         })();
     }, [dispatch, notebookId]);
-
-    if (!loaded) return null;
 
     let notebookPageCount = Object.keys(notebookPages).length;
 
@@ -36,7 +32,7 @@ const NotebookView = () => {
         <div id="notebookView-wrapper">
 
             <div id="notebook-details-wrapper">
-                <div>{currentNotebook.name}</div>
+                <div>{currentNotebook?.name}</div>
                 <div id="notebook-options">
                     <div>{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
                     <div id="note-book-actions-container">
