@@ -15,11 +15,7 @@ const EditNotebookView = ({ currentNotebook }) => {
         const editData = { name };
 
         const response = await dispatch(TH_editNotebook(currentNotebook.id, editData));
-        if (response.errors) {
-            setErrors(response.errors);
-        } else {
-            console.log("EDITED NOTEBOOK RETURNED: ", response);
-        }
+        if (response.errors) setErrors(response.errors);
     }
 
     return (

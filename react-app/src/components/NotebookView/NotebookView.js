@@ -45,7 +45,7 @@ const NotebookView = () => {
         <div id="notebookView-wrapper">
 
             <div id="notebook-details-wrapper">
-                <div>{currentNotebook?.name}</div>
+                <div id="notebook-details-name">{currentNotebook?.name}</div>
                 <div id="notebook-options">
                     <div>{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
                     <div id="note-book-actions-container">

@@ -37,7 +37,7 @@ const NotebooksDropdown = () => {
             {showNotebooks && (
                 <div id="notebooks-dropdown-list">
                     {Object.keys(notebooks).map(notebookId => (
-                        <div className="clickable" onClick={() => selectNotebook(notebookId)} key={notebookId}>{notebooks[notebookId].name}</div>
+                        <div className="clickable dropdown-notebook" onClick={() => selectNotebook(notebookId)} key={notebookId}>{notebooks[notebookId].name}</div>
                     ))}
                     <div id="create-notebook-button" className="clickable" onClick={createNewNotebook}>
                         New Notebook

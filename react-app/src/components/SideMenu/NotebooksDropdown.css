@@ -9,3 +9,12 @@
 #create-notebook-button {
     border: 1px solid rgb(157, 34, 173);
 }
+
+.dropdown-notebook {
+    /* border: 1px solid green; */
+    margin-top: 4px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
