@@ -1,0 +1,26 @@
+#notebookView-wrapper {
+    border: 3px solid salmon;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+#notebook-details-wrapper {
+    border: 1px solid rgb(19, 141, 70);
+    padding: 8px;
+}
+
+#notebook-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+#note-book-actions-container > i {
+    margin: 6px;
+}
+
+#notebook-details-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -4,7 +4,9 @@ import normalize from "../utils/normalize";
 // Action constants:
 //----------------------------------------
 const GET_NOTEBOOKS = "notebooks/getNotebooks";
-const SET_CURRENT_NOTEBOOK = "notebooks/setCurrent";
+const CREATE_NOTEBOOK = "notebooks/create";
+const DELETE_NOTEBOOK = "notebooks/delete";
+const EDIT_NOTEBOOK = "notebooks/edit";
 
 
 //----------------------------------------
@@ -17,10 +19,24 @@ export const AC_getNotebooks = (notebooks) => {
     }
 }
 
-export const AC_setCurrentNotebook = (notebookData) => {
+export const AC_createNotebook = (newNotebook) => {
     return {
-        type: SET_CURRENT_NOTEBOOK,
-        payload: notebookData
+        type: CREATE_NOTEBOOK,
+        payload: newNotebook
+    }
+}
+
+export const AC_deleteNotebook = (notebookId) => {
+    return {
+        type: DELETE_NOTEBOOK,
+        payload: notebookId
+    }
+}
+
+export const AC_editNotebook = (editedNotebook) => {
+    return {
+        type: EDIT_NOTEBOOK,
+        payload: editedNotebook
     }
 }
 
@@ -45,16 +61,48 @@ export const TH_getNotebooks = () => async (dispatch) => {
     }
 }
 
-export const TH_setCurrentNotebook = (notebookData) => (dispatch) => {
-    dispatch(AC_setCurrentNotebook(notebookData));
+export const TH_createNotebook = () => async (dispatch) => {
+    const response = await fetch(`/api/notebooks`, {
+        method: "POST"
+    });
+
+    if (response.ok) {
+        const newNotebook = await response.json();
+        await dispatch(AC_createNotebook(newNotebook));
+        return newNotebook;
+    }
+}
+
+export const TH_deleteNotebook = (notebookId) => async (dispatch) => {
+    const response = await fetch(`/api/notebooks/${notebookId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        await dispatch(AC_deleteNotebook(notebookId));
+    }
+}
+
+export const TH_editNotebook = (notebookId, editData) => async (dispatch) => {
+    const response = await fetch(`/api/notebooks/${notebookId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editData)
+    });
+
+    if (response.ok) {
+        const editedNotebook = await response.json();
+        await dispatch(AC_editNotebook(editedNotebook));
+        return editedNotebook;
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
 }
 
 
 // Initial state:
-const initialState = {
-    all: {},
-    current: {}
-}
+const initialState = {};
 
 // Reducer:
 const notebookReducer = (state = initialState, action) => {
@@ -63,12 +111,19 @@ const notebookReducer = (state = initialState, action) => {
         case GET_NOTEBOOKS:
             // Assign newState to a normalized version of
             // the data returned by the fetch:
-            newState = state;
-            newState.all = normalize(action.payload.Notebooks);
+            newState = normalize(action.payload.Notebooks);
             return newState;
-        case SET_CURRENT_NOTEBOOK:
-            newState = state;
-            newState.current = action.payload;
+        case CREATE_NOTEBOOK:
+            newState = { ...state };
+            newState[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_NOTEBOOK:
+            newState = { ...state };
+            delete newState[action.payload];
+            return newState;
+        case EDIT_NOTEBOOK:
+            newState = { ...state };
+            newState[action.payload.id] = action.payload;
             return newState;
         default:
             return state;

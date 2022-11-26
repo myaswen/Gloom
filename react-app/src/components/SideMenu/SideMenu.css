@@ -1,5 +1,6 @@
 #sidemenu-wrapper {
     border: 3px solid turquoise;
+    width: 256px;
     min-width: 256px;
     height: 100%;
     display: flex;
@@ -19,4 +20,5 @@
 #nav-wrapper {
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }

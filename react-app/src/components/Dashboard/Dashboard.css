@@ -2,12 +2,6 @@
     width: 100%;
     height: 100%;
     border: 3px solid purple;
-    display: flex;
-}
-
-#dashboard-content-wrapper {
-    border: 3px solid green;
-    width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 1fr;

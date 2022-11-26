@@ -5,9 +5,15 @@
     box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
     height: 100%;
     width: 100%;
     margin: 0;
     background-color: #1b1b1b;
-  }
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
