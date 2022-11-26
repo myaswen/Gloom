@@ -20,7 +20,7 @@ const NotebooksDropdown = () => {
         })();
     }, [dispatch]);
 
-    const selectNotebook = async (notebookId) => {
+    const selectNotebook = (notebookId) => {
         history.push(`/notebooks/${notebookId}`);
     }
 

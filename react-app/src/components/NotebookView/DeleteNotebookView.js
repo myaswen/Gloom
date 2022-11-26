@@ -1,16 +1,26 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { TH_deleteNotebook } from "../../store/notebook";
 
 import "./DeleteNotebookView.css";
 
 const DeleteNotebookView = ({ currentNotebook }) => {
+    const history = useHistory();
+    const dispatch = useDispatch();
+
     const [confirmationText, setConfirmationText] = useState("");
     const [errors, setErrors] = useState([]);
 
-    const deleteNotebook = () => {
+    const deleteNotebook = async () => {
         if (confirmationText === currentNotebook?.name) {
-            console.log("########## IT SHALL BE DONE!")
+            console.log("########## IT SHALL BE DONE!");
+
+            await dispatch(TH_deleteNotebook(currentNotebook.id));
+            history.push("/dashboard");
+
         } else {
-            setErrors(["Confirmation does not match"])
+            setErrors(["Confirmation does not match"]);
         }
     }
 

@@ -5,6 +5,7 @@ import normalize from "../utils/normalize";
 //----------------------------------------
 const GET_NOTEBOOKS = "notebooks/getNotebooks";
 const CREATE_NOTEBOOK = "notebooks/create";
+const DELETE_NOTEBOOK = "notebooks/delete";
 
 
 //----------------------------------------
@@ -21,6 +22,13 @@ export const AC_createNotebook = (newNotebook) => {
     return {
         type: CREATE_NOTEBOOK,
         payload: newNotebook
+    }
+}
+
+export const AC_deleteNotebook = (notebookId) => {
+    return {
+        type: DELETE_NOTEBOOK,
+        payload: notebookId
     }
 }
 
@@ -56,6 +64,16 @@ export const TH_createNotebook = () => async (dispatch) => {
     }
 }
 
+export const TH_deleteNotebook = (notebookId) => async (dispatch) => {
+    const response = await fetch(`/api/notebooks/${notebookId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        await dispatch(AC_deleteNotebook(notebookId));
+    }
+}
+
 
 // Initial state:
 const initialState = {};
@@ -67,12 +85,15 @@ const notebookReducer = (state = initialState, action) => {
         case GET_NOTEBOOKS:
             // Assign newState to a normalized version of
             // the data returned by the fetch:
-            // newState = { ...state };
             newState = normalize(action.payload.Notebooks);
             return newState;
         case CREATE_NOTEBOOK:
             newState = { ...state };
             newState[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_NOTEBOOK:
+            newState = { ...state };
+            delete newState[action.payload];
             return newState;
         default:
             return state;
