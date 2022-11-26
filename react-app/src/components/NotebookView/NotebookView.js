@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import "./NotebooksView.css";
+import "./NotebookView.css";
 import { TH_getNotebookPages } from "../../store/page";
 import DeleteNotebookView from "./DeleteNotebookView";
+import { useParams } from "react-router-dom";
 
-const NotebooksView = () => {
+const NotebookView = () => {
     const dispatch = useDispatch();
+    const { notebookId } = useParams();
 
-    const currentNotebook = useSelector(state => state.notebooks.current);
+    const notebooks = useSelector(state => state.notebooks.all);
+    const currentNotebook = notebooks[notebookId];
     const notebookPages = useSelector(state => state.pages.notebook);
 
     const [loaded, setLoaded] = useState(false);
@@ -20,17 +23,17 @@ const NotebooksView = () => {
 
     useEffect(() => {
         (async () => {
-            await dispatch(TH_getNotebookPages(currentNotebook.id));
+            await dispatch(TH_getNotebookPages(notebookId));
             setLoaded(true);
         })();
-    }, [dispatch, currentNotebook]);
+    }, [dispatch, notebookId]);
 
     if (!loaded) return null;
 
     let notebookPageCount = Object.keys(notebookPages).length;
 
     return (
-        <div id="notebooksView-wrapper">
+        <div id="notebookView-wrapper">
 
             <div id="notebook-details-wrapper">
                 <div>{currentNotebook.name}</div>
@@ -60,4 +63,4 @@ const NotebooksView = () => {
     )
 }
 
-export default NotebooksView;
+export default NotebookView;

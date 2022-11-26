@@ -7,7 +7,7 @@ import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage/SplashPage';
 import Dashboard from './components/Dashboard/Dashboard';
 import SideMenu from './components/SideMenu/SideMenu';
-import NotebooksView from './components/NotebooksView/NotebooksView';
+import NotebookView from './components/NotebookView/NotebookView';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ function App() {
         <Route path='/notebooks/:notebookId'>
           <div id='route-wrapper'>
             <SideMenu user={user} />
-            <NotebooksView />
+            <NotebookView />
           </div>
         </Route>
 
