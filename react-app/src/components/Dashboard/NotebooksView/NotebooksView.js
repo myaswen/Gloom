@@ -50,7 +50,7 @@ const NotebooksView = () => {
             )}
 
             {showDeleteView && (
-                <DeleteNotebookView setShowDeleteView={setShowDeleteView} />
+                <DeleteNotebookView currentNotebook={currentNotebook} />
             )}
 
         </div>
