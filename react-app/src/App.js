@@ -8,6 +8,7 @@ import SplashPage from './components/SplashPage/SplashPage';
 import Dashboard from './components/Dashboard/Dashboard';
 import SideMenu from './components/SideMenu/SideMenu';
 import NotebookView from './components/NotebookView/NotebookView';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,10 @@ function App() {
             <SideMenu user={user} />
             <NotebookView />
           </div>
+        </Route>
+
+        <Route>
+          <NotFound />
         </Route>
 
       </Switch>
