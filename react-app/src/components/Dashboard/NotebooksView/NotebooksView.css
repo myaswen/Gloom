@@ -14,3 +14,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+#note-book-actions-container > i {
+    margin: 6px;
+}
