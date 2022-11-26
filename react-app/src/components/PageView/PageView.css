@@ -23,8 +23,25 @@
 
 #save-page-container {
     display: flex;
+    flex-direction: column;
 }
 
 #save-page-container > div {
     margin: 6px;
+}
+
+#page-save-date {
+    font-size: 14px;
+}
+
+#page-edit-title-input {
+    width: 300px;
+    height: 40px;
+}
+
+#page-edit-content-input {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(51, 51, 51);
+    resize: none;
 }
