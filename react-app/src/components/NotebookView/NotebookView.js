@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import "./NotebookView.css";
 import { TH_getNotebookPages } from "../../store/page";
 import DeleteNotebookView from "./DeleteNotebookView";
-import { useParams } from "react-router-dom";
+import EditNotebookView from "./EditNotebookView";
 
 const NotebookView = () => {
     const dispatch = useDispatch();
@@ -15,9 +16,11 @@ const NotebookView = () => {
     const notebookPages = useSelector(state => state.pages.notebook);
 
     const [showDeleteView, setShowDeleteView] = useState(false);
+    const [showEditView, setShowEditView] = useState(false);
 
     useEffect(() => {
         setShowDeleteView(false);
+        setShowEditView(false);
     }, [currentNotebook]);
 
     useEffect(() => {
@@ -28,6 +31,16 @@ const NotebookView = () => {
 
     let notebookPageCount = Object.keys(notebookPages).length;
 
+    const toggleDeleteView = () => {
+        setShowEditView(false);
+        setShowDeleteView(!showDeleteView);
+    }
+
+    const toggleEditView = () => {
+        setShowDeleteView(false);
+        setShowEditView(!showEditView);
+    }
+
     return (
         <div id="notebookView-wrapper">
 
@@ -37,13 +50,13 @@ const NotebookView = () => {
                     <div>{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
                     <div id="note-book-actions-container">
                         <i className="fa-solid fa-file-circle-plus clickable" title="Add a page"></i>
-                        <i onClick={() => setShowDeleteView(true)} className="fa-solid fa-trash-can clickable" title="Delete notebook"></i>
-                        <i className="fa-solid fa-wrench clickable" title="Edit notebook"></i>
+                        <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable" title="Delete notebook"></i>
+                        <i onClick={toggleEditView} className="fa-solid fa-wrench clickable" title="Edit notebook"></i>
                     </div>
                 </div>
             </div>
 
-            {!showDeleteView && (
+            {!showDeleteView && !showEditView && (
                 <div id="notebook-pages-list">
                     {Object.keys(notebookPages).map(pageId => (
                         <div key={pageId}>{notebookPages[pageId].title}</div>
@@ -53,6 +66,10 @@ const NotebookView = () => {
 
             {showDeleteView && (
                 <DeleteNotebookView currentNotebook={currentNotebook} />
+            )}
+
+            {showEditView && (
+                <EditNotebookView currentNotebook={currentNotebook} />
             )}
 
         </div>

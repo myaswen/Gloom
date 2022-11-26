@@ -14,11 +14,8 @@ const DeleteNotebookView = ({ currentNotebook }) => {
 
     const deleteNotebook = async () => {
         if (confirmationText === currentNotebook?.name) {
-            console.log("########## IT SHALL BE DONE!");
-
             await dispatch(TH_deleteNotebook(currentNotebook.id));
             history.push("/dashboard");
-
         } else {
             setErrors(["Confirmation does not match"]);
         }
