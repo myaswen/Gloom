@@ -4,7 +4,7 @@ import normalize from "../utils/normalize";
 // Action constants:
 //----------------------------------------
 const GET_NOTEBOOK_PAGES = "notebook/getPages";
-
+const CREATE_NOTEBOOK_PAGE = "notebooks/pages/new";
 
 //----------------------------------------
 // Action creators:
@@ -13,6 +13,13 @@ export const AC_getNotebookPages = (pages) => {
     return {
         type: GET_NOTEBOOK_PAGES,
         payload: pages
+    }
+}
+
+export const AC_createNotebookPage = (newNotebookPage) => {
+    return {
+        type: CREATE_NOTEBOOK_PAGE,
+        payload: newNotebookPage
     }
 }
 
@@ -37,6 +44,21 @@ export const TH_getNotebookPages = (notebookId) => async (dispatch) => {
     }
 }
 
+export const TH_createNotebookPage = (notebookId) => async (dispatch) => {
+    const response = await fetch(`/api/notebooks/${notebookId}/pages`, {
+        method: "POST"
+    });
+
+    if (response.ok) {
+        const newNotebookPage = await response.json();
+        await dispatch(AC_createNotebookPage(newNotebookPage));
+        return newNotebookPage;
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+}
+
 
 // Initial state:
 const initialState = {
@@ -52,8 +74,12 @@ const pageReducer = (state = initialState, action) => {
         case GET_NOTEBOOK_PAGES:
             // Assign newState to a normalized version of
             // the data returned by the fetch:
-            newState = { ...state }
+            newState = { ...state };
             newState.notebook = normalize(action.payload.Pages);
+            return newState;
+        case CREATE_NOTEBOOK_PAGE:
+            newState = { ...state };
+            newState.notebook[action.payload.id] = action.payload;
             return newState;
         default:
             return state;
