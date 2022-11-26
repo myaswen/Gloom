@@ -5,3 +5,7 @@
 #notebooks-dropdown-list {
     margin-left: 12px;
 }
+
+#create-notebook-button {
+    border: 1px solid rgb(157, 34, 173);
+}

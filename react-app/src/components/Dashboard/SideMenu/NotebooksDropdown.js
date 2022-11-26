@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TH_getNotebooks } from "../../../store/notebook";
 import { TH_setCurrentNotebook } from "../../../store/notebook";
+import { TH_createNotebook } from "../../../store/notebook";
 import "./NotebooksDropdown.css";
 
 const NotebooksDropdown = ({ setViewSelection }) => {
@@ -11,7 +12,7 @@ const NotebooksDropdown = ({ setViewSelection }) => {
     const [showNotebooks, setShowNotebooks] = useState(false);
 
     useEffect(() => {
-        (async() => {
+        (async () => {
             await dispatch(TH_getNotebooks());
             setLoaded(true);
         })();
@@ -24,6 +25,11 @@ const NotebooksDropdown = ({ setViewSelection }) => {
         setViewSelection("notebooks");
     }
 
+    const createNewNotebook = async () => {
+        await dispatch(TH_createNotebook());
+        setViewSelection("notebooks");
+    }
+
     return (
         <div id="notebooks-dropdown-wrapper">
             <div onClick={() => setShowNotebooks(!showNotebooks)} className="clickable">Notebooks</div>
@@ -32,6 +38,9 @@ const NotebooksDropdown = ({ setViewSelection }) => {
                     {Object.keys(notebooks).map(notebookId => (
                         <div className="clickable" onClick={() => selectNotebook(notebookId)} key={notebookId}>{notebooks[notebookId].name}</div>
                     ))}
+                    <div id="create-notebook-button" className="clickable" onClick={createNewNotebook}>
+                        New Notebook
+                    </div>
                 </div>
             )}
         </div>

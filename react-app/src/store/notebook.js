@@ -5,6 +5,7 @@ import normalize from "../utils/normalize";
 //----------------------------------------
 const GET_NOTEBOOKS = "notebooks/getNotebooks";
 const SET_CURRENT_NOTEBOOK = "notebooks/setCurrent";
+const CREATE_NOTEBOOK = "notebooks/create";
 
 
 //----------------------------------------
@@ -24,6 +25,12 @@ export const AC_setCurrentNotebook = (notebookData) => {
     }
 }
 
+export const AC_createNotebook = (newNotebook) => {
+    return {
+        type: CREATE_NOTEBOOK,
+        payload: newNotebook
+    }
+}
 
 //----------------------------------------
 // Thunks:
@@ -49,6 +56,17 @@ export const TH_setCurrentNotebook = (notebookData) => (dispatch) => {
     dispatch(AC_setCurrentNotebook(notebookData));
 }
 
+export const TH_createNotebook = () => async (dispatch) => {
+    const response = await fetch(`/api/notebooks`, {
+        method: "POST"
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(AC_createNotebook(data));
+    }
+}
+
 
 // Initial state:
 const initialState = {
@@ -63,11 +81,17 @@ const notebookReducer = (state = initialState, action) => {
         case GET_NOTEBOOKS:
             // Assign newState to a normalized version of
             // the data returned by the fetch:
-            newState = state;
+            newState = { ...state };
             newState.all = normalize(action.payload.Notebooks);
             return newState;
         case SET_CURRENT_NOTEBOOK:
-            newState = state;
+            newState = { ...state };
+            newState.current = action.payload;
+            return newState;
+        case CREATE_NOTEBOOK:
+            newState = { ...state };
+            newState.all = { ...state.all };
+            newState.all[action.payload.id] = action.payload;
             newState.current = action.payload;
             return newState;
         default:
