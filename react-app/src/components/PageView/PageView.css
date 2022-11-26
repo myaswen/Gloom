@@ -2,4 +2,29 @@
     border: 3px solid green;
     width: 100%;
     min-width: 600px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60px auto 40px;
+}
+
+#page-view-header {
+    border: 3px solid purple;
+    display: flex;
+    justify-content: space-between;
+}
+
+#page-view-body {
+    border: 3px solid rgb(197, 166, 14);
+}
+
+#page-view-footer {
+    border: 3px solid rgb(24, 170, 175);
+}
+
+#save-page-container {
+    display: flex;
+}
+
+#save-page-container > div {
+    margin: 6px;
 }

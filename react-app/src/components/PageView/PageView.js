@@ -10,10 +10,23 @@ const PageView = () => {
     const notebookPages = useSelector(state => state.pages.notebook);
     const currentPage = notebookPages[pageId];
 
+    const savedDate = new Date(currentPage?.updatedAt).toLocaleString();
+
     return (
         <div id="page-view-wrapper">
-            Page id: {pageId}
-            Notebook id: {currentPage?.notebookId}
+            <div id="page-view-header">
+                <div>{currentPage?.title}</div>
+                <div id="save-page-container">
+                    <div>Last save {savedDate}</div>
+                    <div>Save</div>
+                </div>
+            </div>
+            <div id="page-view-body">
+                {currentPage?.content}
+            </div>
+            <div id="page-view-footer">
+                Page view footer placeholder
+            </div>
         </div>
     )
 }
