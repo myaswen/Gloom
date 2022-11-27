@@ -1,6 +1,7 @@
 #notebookView-wrapper {
     border: 3px solid salmon;
     width: 400px;
+    min-width: 400px;
     display: flex;
     flex-direction: column;
 }

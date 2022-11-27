@@ -1,0 +1,73 @@
+#page-view-wrapper {
+    border: 3px solid green;
+    width: 100%;
+    min-width: 600px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 60px auto 40px;
+}
+
+#page-view-header {
+    border: 3px solid rgb(0, 213, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#page-header-options-container {
+    height: 100%;
+    width: 100%;
+    border: 3px solid purple;
+    display: flex;
+    justify-content: space-between;
+}
+
+#page-view-body {
+    border: 3px solid rgb(197, 166, 14);
+}
+
+#page-view-footer {
+    border: 3px solid rgb(24, 170, 175);
+}
+
+#save-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#save-page-container > div {
+    margin: 2px;
+}
+
+#page-save-date {
+    font-size: 12px;
+}
+
+#page-edit-title-input {
+    width: 300px;
+    height: 40px;
+}
+
+#page-edit-content-input {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(51, 51, 51);
+    resize: none;
+}
+
+#edit-page-popup-container {
+    position: relative;
+    background-color: rgb(99, 40, 105);
+    width: 400px;
+    font-size: 14px;
+    top: 40px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#page-header-options-left > i {
+    margin: 8px;
+}

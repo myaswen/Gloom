@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import "./NotebookView.css";
-import { TH_getNotebookPages } from "../../store/page";
+import { TH_createNotebookPage, TH_getNotebookPages } from "../../store/page";
 import DeleteNotebookView from "./DeleteNotebookView";
 import EditNotebookView from "./EditNotebookView";
 
 const NotebookView = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const { notebookId } = useParams();
 
@@ -41,6 +42,17 @@ const NotebookView = () => {
         setShowEditView(!showEditView);
     }
 
+    const createPage = async () => {
+        setShowEditView(false);
+        setShowDeleteView(false);
+        const newNotebookPage = await dispatch(TH_createNotebookPage(notebookId));
+        history.push(`/notebooks/${notebookId}/pages/${newNotebookPage.id}`);
+    }
+
+    const selectPage = (pageId) => {
+        history.push(`/notebooks/${notebookId}/pages/${pageId}`)
+    }
+
     return (
         <div id="notebookView-wrapper">
 
@@ -49,7 +61,7 @@ const NotebookView = () => {
                 <div id="notebook-options">
                     <div>{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
                     <div id="note-book-actions-container">
-                        <i className="fa-solid fa-file-circle-plus clickable" title="Add a page"></i>
+                        <i onClick={createPage} className="fa-solid fa-file-circle-plus clickable" title="Add a page"></i>
                         <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable" title="Delete notebook"></i>
                         <i onClick={toggleEditView} className="fa-solid fa-wrench clickable" title="Edit notebook"></i>
                     </div>
@@ -59,7 +71,7 @@ const NotebookView = () => {
             {!showDeleteView && !showEditView && (
                 <div id="notebook-pages-list">
                     {Object.keys(notebookPages).map(pageId => (
-                        <div key={pageId}>{notebookPages[pageId].title}</div>
+                        <div className="clickable dropdown-page" onClick={() => selectPage(pageId)} key={pageId}>{notebookPages[pageId].title}</div>
                     ))}
                 </div>
             )}

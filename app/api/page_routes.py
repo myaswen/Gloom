@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from sqlalchemy.orm import joinedload
 from datetime import datetime
 from app.models import db, Page, Tag
-from app.forms.page_form import PageForm
+from app.forms.edit_page_form import EditPageForm
 
 page_routes = Blueprint('pages', __name__)
 
@@ -59,7 +59,7 @@ def edit_page(page_id):
         return { "errors": { "Forbidden": "User is not authorized to access this page" } }, 403
 
     # Instantiate form instance for data validation:
-    form = PageForm()
+    form = EditPageForm()
 
     # Data from the request is passed in automatically,
     # but the CSRF token needs to be added manually:

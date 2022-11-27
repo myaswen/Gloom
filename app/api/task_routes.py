@@ -62,7 +62,9 @@ def create_task():
         new_task = Task(
             user_id = current_user_id,
             content = form.data["content"],
-            due_date = form.data["dueDate"] or None
+            due_date = form.data["dueDate"] or None,
+            created_at = datetime.utcnow(),
+            updated_at = datetime.utcnow()
         )
         db.session.add(new_task)
         db.session.commit()
