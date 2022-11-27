@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./Dashboard.css";
+import RecentPages from "./RecentPages";
 import Scratchpad from "./Scratchpad";
 
 const Dashboard = () => {
@@ -9,7 +10,7 @@ const Dashboard = () => {
         <div id="dashboard-wrapper">
             <div id="dashboard-bookmarks-wrapper">bookmarks placeholder</div>
             <div id="dashboard-pages-wrapper">
-                recent pages placeholder
+                <RecentPages />
             </div>
             <div id="dashboard-scratchpad-wrapper">
                 <Scratchpad />
