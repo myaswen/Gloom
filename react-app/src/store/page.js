@@ -117,15 +117,27 @@ const pageReducer = (state = initialState, action) => {
         case GET_NOTEBOOK_PAGES:
             // Assign newState to a normalized version of
             // the data returned by the fetch:
-            newState = { ...state };
+            newState = {
+                user: {...state.user},
+                notebook: {...state.notebook},
+                tag: {...state.tag}
+            };
             newState.notebook = normalize(action.payload.Pages);
             return newState;
         case CREATE_NOTEBOOK_PAGE:
-            newState = { ...state };
+            newState = {
+                user: {...state.user},
+                notebook: {...state.notebook},
+                tag: {...state.tag}
+            };
             newState.notebook[action.payload.id] = action.payload;
             return newState;
         case EDIT_PAGE:
-            newState = { ...state };
+            newState = {
+                user: {...state.user},
+                notebook: {...state.notebook},
+                tag: {...state.tag}
+            };
             newState.notebook[action.payload.id] = action.payload;
             return newState;
         case DELETE_PAGE:
@@ -134,8 +146,6 @@ const pageReducer = (state = initialState, action) => {
                 notebook: {...state.notebook},
                 tag: {...state.tag}
             };
-            console.log("PAYLOAD: ", action.payload);
-            console.log("NEW STATE: ", newState);
             delete newState.notebook[action.payload];
             return newState;
         default:
