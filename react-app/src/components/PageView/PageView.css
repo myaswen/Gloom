@@ -8,6 +8,15 @@
 }
 
 #page-view-header {
+    border: 3px solid rgb(0, 213, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#page-header-options-container {
+    height: 100%;
+    width: 100%;
     border: 3px solid purple;
     display: flex;
     justify-content: space-between;
@@ -28,7 +37,7 @@
 }
 
 #save-page-container > div {
-    margin: 6px;
+    margin: 2px;
 }
 
 #page-save-date {
@@ -45,4 +54,16 @@
     height: 100%;
     background-color: rgb(51, 51, 51);
     resize: none;
+}
+
+#edit-page-errors-container {
+    position: relative;
+    background-color: rgb(99, 40, 105);
+    width: 400px;
+    font-size: 14px;
+    top: 40px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

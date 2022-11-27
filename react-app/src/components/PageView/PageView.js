@@ -20,6 +20,7 @@ const PageView = () => {
     useEffect(() => {
         setTitle(currentPage?.title || "");
         setContent(currentPage?.content || "");
+        setErrors({});
     }, [currentPage]);
 
     const editPage = async () => {
@@ -42,23 +43,40 @@ const PageView = () => {
         <div id="page-view-wrapper">
 
             <div id="page-view-header">
-                <input
-                id="page-edit-title-input"
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                />
-                <div id="save-page-container">
-                    <div onClick={editPage} className="clickable">Save</div>
-                    <div id="page-save-date">Last save {savedDate}</div>
+
+                <div id="page-header-options-container">
+                    <input
+                        id="page-edit-title-input"
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <div id="save-page-container">
+                        <div onClick={editPage} className="clickable">Save</div>
+                        <div id="page-save-date">Last save {savedDate}</div>
+                    </div>
                 </div>
+
+                {Object.keys(errors).length > 0 && (
+                    <div id="edit-page-errors-container">
+                        {errors.title && (
+                            <p>Title error: {errors.title[0]}</p>
+                        )}
+                        {errors.content && (
+                            <p>Content error: {errors.content[0]}</p>
+                        )}
+
+                        <div onClick={() => setErrors({})} className="clickable">Close</div>
+                    </div>
+                )}
+
             </div>
 
             <div id="page-view-body">
                 <textarea
-                id="page-edit-content-input"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
+                    id="page-edit-content-input"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                 />
             </div>
 
