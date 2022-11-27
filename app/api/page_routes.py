@@ -70,6 +70,7 @@ def edit_page(page_id):
         # Perform edits to instance data:
         current_page.title = form.data["title"]
         current_page.content = form.data["content"]
+        current_page.bookmarked = form.data["bookmarked"]
         current_page.updated_at = datetime.utcnow()
         db.session.commit()
 

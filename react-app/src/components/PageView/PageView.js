@@ -15,19 +15,22 @@ const PageView = () => {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [bookmarked, setBookmarked] = useState(false);
     const [errors, setErrors] = useState({});
     const [showDeleteView, setShowDeleteView] = useState(false);
 
     useEffect(() => {
         setTitle(currentPage?.title || "");
         setContent(currentPage?.content || "");
+        setBookmarked(currentPage?.bookmarked || false)
         setErrors({});
     }, [currentPage]);
 
     const editPage = async () => {
         const editData = {
             title,
-            content
+            content,
+            bookmarked
         }
 
         const response = await dispatch(TH_editPage(currentPage.id, editData));
