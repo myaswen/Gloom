@@ -3,10 +3,11 @@ import normalize from "../utils/normalize";
 //----------------------------------------
 // Action constants:
 //----------------------------------------
-const GET_NOTEBOOK_PAGES = "notebook/getPages";
+const GET_NOTEBOOK_PAGES = "notebook/pages";
 const CREATE_NOTEBOOK_PAGE = "notebook/pages/new";
 const EDIT_PAGE = "page/edit";
 const DELETE_PAGE = "page/delete";
+const GET_USER_PAGES = "user/pages";
 
 //----------------------------------------
 // Action creators:
@@ -14,6 +15,13 @@ const DELETE_PAGE = "page/delete";
 export const AC_getNotebookPages = (pages) => {
     return {
         type: GET_NOTEBOOK_PAGES,
+        payload: pages
+    }
+}
+
+export const AC_getUserPages = (pages) => {
+    return {
+        type: GET_USER_PAGES,
         payload: pages
     }
 }
@@ -55,6 +63,18 @@ export const TH_getNotebookPages = (notebookId) => async (dispatch) => {
     } else {
         // If the request returns an error response,
         // return the errors:
+        const errors = await response.json();
+        return errors;
+    }
+}
+
+export const TH_getUserPages = () => async (dispatch) => {
+    const response = await fetch(`/api/pages`);
+
+    if (response.ok) {
+        const pages = await response.json();
+        dispatch(AC_getUserPages(pages));
+    } else {
         const errors = await response.json();
         return errors;
     }
@@ -119,10 +139,18 @@ const pageReducer = (state = initialState, action) => {
             // the data returned by the fetch:
             newState = {
                 user: {...state.user},
-                notebook: {...state.notebook},
+                notebook: {},
                 tag: {...state.tag}
             };
             newState.notebook = normalize(action.payload.Pages);
+            return newState;
+        case GET_USER_PAGES:
+            newState = {
+                user: {},
+                notebook: {...state.notebook},
+                tag: {...state.tag}
+            };
+            newState.user = normalize(action.payload.Pages);
             return newState;
         case CREATE_NOTEBOOK_PAGE:
             newState = {
