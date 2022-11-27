@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import notebookReducer from './notebook';
 import pagesReducer from './page';
+import scratchpadReducer from './scratchpad';
 
 const rootReducer = combineReducers({
   session,
   notebooks: notebookReducer,
-  pages: pagesReducer
+  pages: pagesReducer,
+  scratchpad: scratchpadReducer
 });
 
 
