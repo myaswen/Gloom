@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { TH_editPage } from "../../store/page";
+import { TH_deletePage, TH_editPage } from "../../store/page";
 
 import "./PageView.css";
 
 const PageView = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { pageId } = useParams();
+    const { pageId, notebookId } = useParams();
 
     const notebookPages = useSelector(state => state.pages.notebook);
     const currentPage = notebookPages[pageId];
@@ -41,6 +41,9 @@ const PageView = () => {
 
     const deletePage = async () => {
         console.log(`I'M BOUTA DELETE page ${pageId}!`);
+
+        await dispatch(TH_deletePage(pageId));
+        history.push(`/notebooks/${notebookId}`);
     }
 
     const toggleDeleteView = () => {

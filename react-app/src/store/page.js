@@ -6,6 +6,7 @@ import normalize from "../utils/normalize";
 const GET_NOTEBOOK_PAGES = "notebook/getPages";
 const CREATE_NOTEBOOK_PAGE = "notebook/pages/new";
 const EDIT_PAGE = "page/edit";
+const DELETE_PAGE = "page/delete";
 
 //----------------------------------------
 // Action creators:
@@ -30,6 +31,14 @@ export const AC_editPage = (editedPage) => {
         payload: editedPage
     }
 }
+
+export const AC_deletePage = (pageId) => {
+    return {
+        type: DELETE_PAGE,
+        payload: pageId
+    }
+}
+
 
 //----------------------------------------
 // Thunks:
@@ -83,6 +92,16 @@ export const TH_editPage = (pageId, editData) => async (dispatch) => {
     }
 }
 
+export const TH_deletePage = (pageId) => async (dispatch) => {
+    const response = await fetch(`/api/pages/${pageId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        await dispatch(AC_deletePage(pageId));
+    }
+}
+
 
 // Initial state:
 const initialState = {
@@ -108,6 +127,16 @@ const pageReducer = (state = initialState, action) => {
         case EDIT_PAGE:
             newState = { ...state };
             newState.notebook[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_PAGE:
+            newState = {
+                user: {...state.user},
+                notebook: {...state.notebook},
+                tag: {...state.tag}
+            };
+            console.log("PAYLOAD: ", action.payload);
+            console.log("NEW STATE: ", newState);
+            delete newState.notebook[action.payload];
             return newState;
         default:
             return state;
