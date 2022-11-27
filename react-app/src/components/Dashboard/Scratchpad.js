@@ -11,6 +11,7 @@ const Scratchpad = () => {
 
     const scratchpad = useSelector(state => state.scratchpad);
 
+    const [errors, setErrors] = useState({});
     const [content, setContent] = useState("");
 
     useEffect(() => {
@@ -21,6 +22,8 @@ const Scratchpad = () => {
         dispatch(TH_getScratchpad());
     }, [dispatch]);
 
+    const savedDate = new Date(scratchpad?.updatedAt).toLocaleString();
+
     console.log("CURRENT SCRATCHPAD: ", scratchpad);
     return (
         <div id="scratchpad-container">
@@ -30,12 +33,16 @@ const Scratchpad = () => {
 
                 <div id="save-scratchpad-container">
                     <div>Save</div>
-                    <div>Last save null</div>
+                    <div id="scratchpad-save-date">Last save {savedDate}</div>
                 </div>
 
             </div>
             <div id="scratchpad-input-container">
-                input placeholder
+                <textarea
+                    id="scratchpad-edit-content-input"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                />
             </div>
         </div>
     );
