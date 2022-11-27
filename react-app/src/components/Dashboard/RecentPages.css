@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 40px auto;
+    overflow: auto;
 }
 
 #recent-pages-header {
@@ -13,4 +14,13 @@
 
 #recent-pages-cards-wrapper {
     border: 3px solid purple;
+    display: flex;
+    flex-direction: row-reverse;
+    /* overflow: auto; */
+}
+
+.recent-page-card {
+    border: 3px solid palevioletred;
+    width: 200px;
+    margin: 8px;
 }
