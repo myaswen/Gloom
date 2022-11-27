@@ -2,11 +2,13 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TH_getScratchpad } from "../../store/scratchpad";
+import { useHistory } from "react-router-dom";
+import { TH_editScratchpad, TH_getScratchpad } from "../../store/scratchpad";
 
 import "./Scratchpad.css";
 
 const Scratchpad = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const scratchpad = useSelector(state => state.scratchpad);
@@ -22,9 +24,21 @@ const Scratchpad = () => {
         dispatch(TH_getScratchpad());
     }, [dispatch]);
 
+    const editScratchpad = async () => {
+        const editData = {
+            content
+        };
+
+        const response = await dispatch(TH_editScratchpad(scratchpad.id, editData));
+        if (response.errors) {
+            setErrors(response.errors);
+        } else {
+            history.push(`/dashboard`);
+        }
+    }
+
     const savedDate = new Date(scratchpad?.updatedAt).toLocaleString();
 
-    console.log("CURRENT SCRATCHPAD: ", scratchpad);
     return (
         <div id="scratchpad-container">
             <div id="scratchpad-options-wrapper">
@@ -32,7 +46,7 @@ const Scratchpad = () => {
                 <div>SCRATCH PAD</div>
 
                 <div id="save-scratchpad-container">
-                    <div>Save</div>
+                    <div onClick={editScratchpad} className="clickable">Save</div>
                     <div id="scratchpad-save-date">Last save {savedDate}</div>
                 </div>
 
