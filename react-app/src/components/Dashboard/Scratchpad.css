@@ -10,7 +10,28 @@
 #scratchpad-options-wrapper {
     border: 3px solid rgb(206, 13, 45);
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#scratchpad-options {
+    border: 3px solid rgb(226, 40, 232);
+    height: 100%;
+    width: 100%;
+    display: flex;
     justify-content: space-between;
+}
+
+#edit-scratchpad-popup-container {
+    position: relative;
+    background-color: rgb(99, 40, 105);
+    width: 300px;
+    font-size: 14px;
+    top: 40px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #scratchpad-input-container {

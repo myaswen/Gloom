@@ -41,16 +41,28 @@ const Scratchpad = () => {
 
     return (
         <div id="scratchpad-container">
+
             <div id="scratchpad-options-wrapper">
 
-                <div>SCRATCH PAD</div>
-
-                <div id="save-scratchpad-container">
-                    <div onClick={editScratchpad} className="clickable">Save</div>
-                    <div id="scratchpad-save-date">Last save {savedDate}</div>
+                <div id="scratchpad-options">
+                    <div>SCRATCH PAD</div>
+                    <div id="save-scratchpad-container">
+                        <div onClick={editScratchpad} className="clickable">Save</div>
+                        <div id="scratchpad-save-date">Last save {savedDate}</div>
+                    </div>
                 </div>
 
+                {Object.keys(errors).length > 0 && (
+                    <div id="edit-scratchpad-popup-container">
+                        {errors.content && (
+                            <p>Content error: {errors.content[0]}</p>
+                        )}
+                        <div onClick={() => setErrors({})} className="clickable">Close</div>
+                    </div>
+                )}
+
             </div>
+
             <div id="scratchpad-input-container">
                 <textarea
                     id="scratchpad-edit-content-input"
