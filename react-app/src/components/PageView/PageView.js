@@ -40,8 +40,6 @@ const PageView = () => {
     }
 
     const deletePage = async () => {
-        console.log(`I'M BOUTA DELETE page ${pageId}!`);
-
         await dispatch(TH_deletePage(pageId));
         history.push(`/notebooks/${notebookId}`);
     }
