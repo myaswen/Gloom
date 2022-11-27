@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { TH_editPage } from "../../store/page";
 
 import "./PageView.css";
 
 const PageView = () => {
-    // const dispatch = useDispatch();
+    const history = useHistory();
+    const dispatch = useDispatch();
     const { pageId } = useParams();
 
     const notebookPages = useSelector(state => state.pages.notebook);
@@ -13,11 +15,26 @@ const PageView = () => {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         setTitle(currentPage?.title || "");
         setContent(currentPage?.content || "");
     }, [currentPage]);
+
+    const editPage = async () => {
+        const editData = {
+            title,
+            content
+        }
+
+        const response = await dispatch(TH_editPage(currentPage.id, editData));
+        if (response.errors) {
+            setErrors(response.errors);
+        } else {
+            history.push(`/notebooks/${response.notebookId}/pages/${response.id}`);
+        }
+    }
 
     const savedDate = new Date(currentPage?.updatedAt).toLocaleString();
 
@@ -32,7 +49,7 @@ const PageView = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 />
                 <div id="save-page-container">
-                    <div>Save</div>
+                    <div onClick={editPage} className="clickable">Save</div>
                     <div id="page-save-date">Last save {savedDate}</div>
                 </div>
             </div>

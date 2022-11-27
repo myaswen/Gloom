@@ -4,7 +4,8 @@ import normalize from "../utils/normalize";
 // Action constants:
 //----------------------------------------
 const GET_NOTEBOOK_PAGES = "notebook/getPages";
-const CREATE_NOTEBOOK_PAGE = "notebooks/pages/new";
+const CREATE_NOTEBOOK_PAGE = "notebook/pages/new";
+const EDIT_PAGE = "page/edit";
 
 //----------------------------------------
 // Action creators:
@@ -23,6 +24,12 @@ export const AC_createNotebookPage = (newNotebookPage) => {
     }
 }
 
+export const AC_editPage = (editedPage) => {
+    return {
+        type: EDIT_PAGE,
+        payload: editedPage
+    }
+}
 
 //----------------------------------------
 // Thunks:
@@ -59,6 +66,23 @@ export const TH_createNotebookPage = (notebookId) => async (dispatch) => {
     }
 }
 
+export const TH_editPage = (pageId, editData) => async (dispatch) => {
+    const response = await fetch(`/api/pages/${pageId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editData)
+    });
+
+    if (response.ok) {
+        const editedPage = await response.json();
+        await dispatch(AC_editPage(editedPage));
+        return editedPage;
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+}
+
 
 // Initial state:
 const initialState = {
@@ -78,6 +102,10 @@ const pageReducer = (state = initialState, action) => {
             newState.notebook = normalize(action.payload.Pages);
             return newState;
         case CREATE_NOTEBOOK_PAGE:
+            newState = { ...state };
+            newState.notebook[action.payload.id] = action.payload;
+            return newState;
+        case EDIT_PAGE:
             newState = { ...state };
             newState.notebook[action.payload.id] = action.payload;
             return newState;
