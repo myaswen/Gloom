@@ -47,7 +47,7 @@ const Scratchpad = () => {
                 <div id="scratchpad-options">
                     <div>SCRATCH PAD</div>
                     <div id="save-scratchpad-container">
-                        <div onClick={editScratchpad} className="clickable">Save</div>
+                        <div onClick={editScratchpad} id="scratchpad-save-button" className="clickable">Save</div>
                         <div id="scratchpad-save-date">Last save {savedDate}</div>
                     </div>
                 </div>
