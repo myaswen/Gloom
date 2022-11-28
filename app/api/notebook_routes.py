@@ -5,6 +5,7 @@ from datetime import datetime
 from app.models import db, Notebook, Page
 from app.forms.page_form import PageForm
 from app.forms.notebook_form import NotebookForm
+from app.forms.edit_notebook_form import EditNotebookForm
 
 notebook_routes = Blueprint('notebooks', __name__)
 
@@ -91,7 +92,7 @@ def edit_notebook(notebook_id):
         return { "errors": { "Forbidden": "User is not authorized to access this notebook" } }, 403
 
     # Instantiate form instance for data validation:
-    form = NotebookForm()
+    form = EditNotebookForm()
 
     # Data from the request is passed in automatically,
     # but the CSRF token needs to be added manually:

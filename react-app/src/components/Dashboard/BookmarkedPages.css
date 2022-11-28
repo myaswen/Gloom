@@ -1,0 +1,25 @@
+#bookmarked-pages-wrapper {
+    border: 3px solid blue;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px auto;
+    overflow: auto;
+}
+
+#bookmarked-pages-header {
+    border: 3px solid goldenrod;
+}
+
+#bookmarked-pages-cards-wrapper {
+    border: 3px solid purple;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.bookmarked-page-card {
+    border: 3px solid palevioletred;
+    width: 200px;
+    margin: 8px;
+}

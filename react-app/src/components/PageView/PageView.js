@@ -15,19 +15,22 @@ const PageView = () => {
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [bookmarked, setBookmarked] = useState(false);
     const [errors, setErrors] = useState({});
     const [showDeleteView, setShowDeleteView] = useState(false);
 
     useEffect(() => {
         setTitle(currentPage?.title || "");
         setContent(currentPage?.content || "");
+        setBookmarked(currentPage?.bookmarked || false)
         setErrors({});
     }, [currentPage]);
 
     const editPage = async () => {
         const editData = {
             title,
-            content
+            content,
+            bookmarked
         }
 
         const response = await dispatch(TH_editPage(currentPage.id, editData));
@@ -40,8 +43,6 @@ const PageView = () => {
     }
 
     const deletePage = async () => {
-        console.log(`I'M BOUTA DELETE page ${pageId}!`);
-
         await dispatch(TH_deletePage(pageId));
         history.push(`/notebooks/${notebookId}`);
     }
@@ -49,6 +50,10 @@ const PageView = () => {
     const toggleDeleteView = () => {
         setErrors({});
         setShowDeleteView(true);
+    }
+
+    const toggleBookmark = () => {
+        setBookmarked(!bookmarked);
     }
 
     const savedDate = new Date(currentPage?.updatedAt).toLocaleString();
@@ -66,6 +71,10 @@ const PageView = () => {
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
+
+                        {!bookmarked && (<i onClick={toggleBookmark} className="fa-regular fa-bookmark clickable" title="Add bookmark"></i>)}
+                        {bookmarked && (<i onClick={toggleBookmark} className="fa-solid fa-bookmark clickable" title="Remove bookmark"></i>)}
+
                         <i onClick={toggleDeleteView} className="fa-solid fa-file-circle-minus clickable" title="Delete page"></i>
                     </div>
                     <div id="save-page-container">
