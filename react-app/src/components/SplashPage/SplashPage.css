@@ -1,8 +1,8 @@
 #splash-page-wrapper {
+    /* border: 1px solid blue; */
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid blue;
     width: 100%;
     height: 100%;
 }

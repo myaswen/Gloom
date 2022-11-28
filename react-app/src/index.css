@@ -26,3 +26,7 @@ input,
 textarea {
     background-color: #262626;
 }
+
+.green {
+    color: green;
+}
