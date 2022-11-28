@@ -59,11 +59,11 @@ const NotebookView = () => {
             <div id="notebook-details-wrapper">
                 <div id="notebook-details-name">{currentNotebook?.name}</div>
                 <div id="notebook-options">
-                    <div>{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
+                    <div id="notebook-page-count">{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
                     <div id="note-book-actions-container">
-                        <i onClick={createPage} className="fa-solid fa-file-circle-plus clickable" title="Add a page"></i>
-                        <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable" title="Delete notebook"></i>
-                        <i onClick={toggleEditView} className="fa-solid fa-wrench clickable" title="Edit notebook"></i>
+                        <i onClick={createPage} className="fa-solid fa-file-circle-plus clickable green" title="Add a page"></i>
+                        <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable red" title="Delete notebook"></i>
+                        <i onClick={toggleEditView} className="fa-solid fa-wrench clickable blue" title="Edit notebook"></i>
                     </div>
                 </div>
             </div>

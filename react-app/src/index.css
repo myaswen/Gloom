@@ -31,3 +31,15 @@ textarea {
 .green {
     color: green;
 }
+
+.red {
+    color: #a40000;
+}
+
+.blue {
+    color: #0003c8;
+}
+
+.yellow {
+    color: goldenrod;
+}
