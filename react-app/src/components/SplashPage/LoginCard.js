@@ -46,7 +46,7 @@ const LoginCard = ({ setShowSignUp }) => {
                 <div id='login-logo-name'>Gloom</div>
             </div>
             <form onSubmit={onLogin}>
-                <div id='login-form-input-container'>
+                <div className='login-form-input-container'>
                     <label htmlFor='email'>Email</label>
                     <input
                         name='email'
@@ -55,7 +55,7 @@ const LoginCard = ({ setShowSignUp }) => {
                         onChange={updateEmail}
                     />
                 </div>
-                <div id='login-form-input-container'>
+                <div className='login-form-input-container'>
                     <label htmlFor='password'>Password</label>
                     <input
                         name='password'

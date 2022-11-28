@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import "./SignUpCard.css";
 
-const SignUpCard = () => {
+const SignUpCard = ({ setShowSignUp }) => {
     const history = useHistory();
     const [errors, setErrors] = useState({});
     const [username, setUsername] = useState('');
@@ -45,8 +45,12 @@ const SignUpCard = () => {
 
     return (
         <div id="signup-form-wrapper">
+            <div id='signup-logo-container'>
+                <i className="fa-solid fa-cloud-moon" id='signup-logo-icon'></i>
+                <div id='signup-logo-name'>Gloom</div>
+            </div>
             <form onSubmit={onSignUp}>
-                <div>
+                <div className='signup-form-input-container'>
                     <label>User Name</label>
                     <input
                         type='text'
@@ -55,10 +59,10 @@ const SignUpCard = () => {
                         value={username}
                     ></input>
                     {errors.username && (
-                        <div>{errors.username[0]}</div>
+                        <div className='signup-error'>{errors.username[0]}</div>
                     )}
                 </div>
-                <div>
+                <div className='signup-form-input-container'>
                     <label>Email</label>
                     <input
                         type='text'
@@ -67,10 +71,10 @@ const SignUpCard = () => {
                         value={email}
                     ></input>
                     {errors.email && (
-                        <div>{errors.email[0]}</div>
+                        <div className='signup-error'>{errors.email[0]}</div>
                     )}
                 </div>
-                <div>
+                <div className='signup-form-input-container'>
                     <label>Password</label>
                     <input
                         type='password'
@@ -79,21 +83,22 @@ const SignUpCard = () => {
                         value={password}
                     ></input>
                 </div>
-                <div>
+                <div className='signup-form-input-container'>
                     <label>Repeat Password</label>
                     <input
                         type='password'
                         name='repeat_password'
                         onChange={updateRepeatPassword}
                         value={repeatPassword}
-                        required={true}
                     ></input>
                     {errors.password && (
-                        <div>{errors.password[0]}</div>
+                        <div className='signup-error'>{errors.password[0]}</div>
                     )}
                 </div>
-                <button type='submit'>Sign Up</button>
+                <button type='submit' id='signup-button' className='clickable'>Sign Up</button>
             </form>
+            <p>Already have an account?</p>
+            <div onClick={() => setShowSignUp(false)} className="clickable green">Log In</div>
         </div>
     );
 };

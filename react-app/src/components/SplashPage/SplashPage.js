@@ -20,7 +20,7 @@ const SplashPage = () => {
                 <p>Placeholder for splash page info</p>
             </div>
             {!showSignUp && <LoginCard setShowSignUp={setShowSignUp} />}
-            {showSignUp && <SignUpCard />}
+            {showSignUp && <SignUpCard setShowSignUp={setShowSignUp} />}
         </div>
     );
 };
