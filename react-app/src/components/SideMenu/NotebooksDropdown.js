@@ -43,7 +43,7 @@ const NotebooksDropdown = () => {
                         <div className="clickable dropdown-notebook hover-lgrey" onClick={() => selectNotebook(notebookId)} key={notebookId}>
                             <i className="fa-solid fa-book"></i>
                             <div>{notebooks[notebookId].name}</div>
-                            </div>
+                        </div>
                     ))}
                     <div id="create-notebook-button" className="clickable hover-lgrey" onClick={createNewNotebook}>
                         <i className="fa-solid fa-book-medical green"></i>

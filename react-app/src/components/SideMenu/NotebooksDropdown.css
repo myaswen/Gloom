@@ -24,6 +24,7 @@
     overflow: hidden;
     padding: 4px 4px 4px 30px;
     display: flex;
+    align-items: center;
 }
 
 .dropdown-notebook > div {

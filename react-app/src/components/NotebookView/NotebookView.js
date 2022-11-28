@@ -53,6 +53,11 @@ const NotebookView = () => {
         history.push(`/notebooks/${notebookId}/pages/${pageId}`)
     }
 
+    const formatDate = (dateString) => {
+        const savedDate = new Date(dateString).toLocaleString();
+        return savedDate;
+    }
+
     return (
         <div id="notebookView-wrapper">
 
@@ -71,7 +76,10 @@ const NotebookView = () => {
             {!showDeleteView && !showEditView && (
                 <div id="notebook-pages-list">
                     {Object.keys(notebookPages).map(pageId => (
-                        <div className="clickable dropdown-page" onClick={() => selectPage(pageId)} key={pageId}>{notebookPages[pageId].title}</div>
+                        <div className="clickable dropdown-page hover-lgrey" onClick={() => selectPage(pageId)} key={pageId}>
+                            <div>{notebookPages[pageId].title}</div>
+                            <div className="notebook-page-card-date">Last edit {formatDate(notebookPages[pageId].updatedAt)}</div>
+                        </div>
                     ))}
                 </div>
             )}
