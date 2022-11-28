@@ -47,6 +47,15 @@
     border: none;
     border-radius: 8px;
     margin-top: 16px;
+}
+
+#demo-login-button {
+    background-color: rgb(161, 115, 0);
+    width: 280px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 16px;
     margin-bottom: 40px;
 }
 
