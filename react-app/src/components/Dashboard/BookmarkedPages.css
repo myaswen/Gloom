@@ -1,4 +1,4 @@
-#recent-pages-wrapper {
+#bookmarked-pages-wrapper {
     border: 3px solid blue;
     width: 100%;
     height: 100%;
@@ -8,17 +8,17 @@
     overflow: auto;
 }
 
-#recent-pages-header {
+#bookmarked-pages-header {
     border: 3px solid goldenrod;
 }
 
-#recent-pages-cards-wrapper {
+#bookmarked-pages-cards-wrapper {
     border: 3px solid purple;
     display: flex;
     flex-direction: row-reverse;
 }
 
-.recent-page-card {
+.bookmarked-page-card {
     border: 3px solid palevioletred;
     width: 200px;
     margin: 8px;

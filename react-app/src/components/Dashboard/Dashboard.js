@@ -1,4 +1,5 @@
 import React from "react";
+import BookmarkedPages from "./BookmarkedPages";
 
 import "./Dashboard.css";
 import RecentPages from "./RecentPages";
@@ -8,7 +9,9 @@ const Dashboard = () => {
 
     return (
         <div id="dashboard-wrapper">
-            <div id="dashboard-bookmarks-wrapper">bookmarks placeholder</div>
+            <div id="dashboard-bookmarks-wrapper">
+                <BookmarkedPages />
+            </div>
             <div id="dashboard-pages-wrapper">
                 <RecentPages />
             </div>
