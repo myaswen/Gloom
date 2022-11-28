@@ -68,7 +68,7 @@ const NotebookView = () => {
                     <div id="note-book-actions-container">
                         <i onClick={createPage} className="fa-solid fa-file-circle-plus clickable green" title="Add a page"></i>
                         <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable red" title="Delete notebook"></i>
-                        <i onClick={toggleEditView} className="fa-solid fa-wrench clickable blue" title="Edit notebook"></i>
+                        <i onClick={toggleEditView} className="fa-solid fa-pencil clickable blue" title="Edit notebook"></i>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@ const NotebookView = () => {
                 <div id="notebook-pages-list">
                     {Object.keys(notebookPages).map(pageId => (
                         <div className="clickable dropdown-page hover-lgrey" onClick={() => selectPage(pageId)} key={pageId}>
-                            <div>{notebookPages[pageId].title}</div>
+                            <div className="notebook-page-title">{notebookPages[pageId].title}</div>
                             <div className="notebook-page-card-date">Last edit {formatDate(notebookPages[pageId].updatedAt)}</div>
                         </div>
                     ))}
