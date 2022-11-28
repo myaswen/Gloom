@@ -15,15 +15,22 @@
 
 #create-notebook-button > div {
     margin-left: 6px;
+    color: green;
 }
 
 .dropdown-notebook {
     /* border: 1px solid green; */
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-
     padding: 4px 4px 4px 30px;
+    display: flex;
+}
+
+.dropdown-notebook > div {
+    width: 200px;
+    margin-left: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #notebooks-dropdown-button {
