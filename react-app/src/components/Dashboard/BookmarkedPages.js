@@ -1,20 +1,10 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { TH_getUserPages } from "../../store/page";
 
 import "./BookmarkedPages.css";
 
-const BookmarkedPages = () => {
+const BookmarkedPages = ({ userPages }) => {
     const history = useHistory();
-    const dispatch = useDispatch();
-
-    const userPages = useSelector(state => state.pages.user);
-
-    useEffect(() => {
-        dispatch(TH_getUserPages());
-    }, [dispatch]);
 
     const pageIds = Object.keys(userPages);
     const bookmarkedPageIds = pageIds.filter((pageId) => userPages[pageId].bookmarked === true);
