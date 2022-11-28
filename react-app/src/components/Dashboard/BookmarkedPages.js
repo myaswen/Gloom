@@ -1,9 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import "./BookmarkedPages.css";
-
-const BookmarkedPages = ({ userPages }) => {
+const BookmarkedPages = ({ userPages, formatDate }) => {
     const history = useHistory();
 
     const pageIds = Object.keys(userPages);
@@ -14,17 +12,17 @@ const BookmarkedPages = ({ userPages }) => {
     }
 
     return (
-        <div id="bookmarked-pages-wrapper">
+        <div className="dashboard-comp-wrapper">
 
-            <div id="bookmarked-pages-header">
+            <div className="dashboard-comp-header">
                 <div>Bookmarked</div>
             </div>
 
-            <div id="bookmarked-pages-cards-wrapper">
+            <div className="dashboard-comp-page-card-wrapper">
                 {bookmarkedPageIds.map(pageId => (
-                    <div className="bookmarked-page-card clickable" key={pageId} onClick={() => selectPage(pageId)}>
-                        <div>{userPages[pageId].title}</div>
-                        <div>{userPages[pageId].updatedAt}</div>
+                    <div className="dashboard-comp-page-card clickable" key={pageId} onClick={() => selectPage(pageId)}>
+                        <div className="dashboard-page-card-title">{userPages[pageId].title}</div>
+                        <div className="dashboard-page-card-date">{formatDate(userPages[pageId].updatedAt)}</div>
                     </div>
                 ))}
             </div>

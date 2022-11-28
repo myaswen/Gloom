@@ -1,9 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import "./RecentPages.css";
-
-const RecentPages = ({ userPages }) => {
+const RecentPages = ({ userPages, formatDate }) => {
     const history = useHistory();
 
     const pageIds = Object.keys(userPages);
@@ -14,17 +12,17 @@ const RecentPages = ({ userPages }) => {
     }
 
     return (
-        <div id="recent-pages-wrapper">
+        <div className="dashboard-comp-wrapper">
 
-            <div id="recent-pages-header">
-                <div>Recently created</div>
+            <div className="dashboard-comp-header">
+                <div>Recently Created</div>
             </div>
 
-            <div id="recent-pages-cards-wrapper">
+            <div className="dashboard-comp-page-card-wrapper">
                 {recentPageIds.map(pageId => (
-                    <div className="recent-page-card clickable" key={pageId} onClick={() => selectPage(pageId)}>
-                        <div>{userPages[pageId].title}</div>
-                        <div>{userPages[pageId].updatedAt}</div>
+                    <div className="dashboard-comp-page-card clickable" key={pageId} onClick={() => selectPage(pageId)}>
+                        <div className="dashboard-page-card-title">{userPages[pageId].title}</div>
+                        <div className="dashboard-page-card-date">{formatDate(userPages[pageId].updatedAt)}</div>
                     </div>
                 ))}
             </div>
