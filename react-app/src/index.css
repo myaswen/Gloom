@@ -1,5 +1,5 @@
 * {
-    color: brown;
+    color: #ffffff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     box-sizing: border-box;
@@ -11,9 +11,18 @@ body,
     height: 100%;
     width: 100%;
     margin: 0;
-    background-color: #1b1b1b;
+    background-color: #000000;
 }
 
 .clickable:hover {
     cursor: pointer;
+}
+
+.hover-lgrey:hover {
+    background-color: #262626;
+}
+
+input,
+textarea {
+    background-color: #262626;
 }

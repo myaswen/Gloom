@@ -29,7 +29,10 @@ const SideMenu = ({ user }) => {
             </div>
 
             <div id="nav-wrapper">
-                <div onClick={() => history.push("/dashboard")} className="clickable">Home</div>
+                <div onClick={() => history.push("/dashboard")} className="clickable hover-lgrey" id="home-button">
+                    <i className="fa-solid fa-house"></i>
+                    <div>Home</div>
+                </div>
                 <NotebooksDropdown />
             </div>
 
