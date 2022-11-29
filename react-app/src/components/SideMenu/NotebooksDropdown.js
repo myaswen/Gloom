@@ -32,15 +32,22 @@ const NotebooksDropdown = () => {
     return (
         <div id="notebooks-dropdown-wrapper">
 
-            <div onClick={() => setShowNotebooks(!showNotebooks)} className="clickable">Notebooks</div>
+            <div onClick={() => setShowNotebooks(!showNotebooks)} className="clickable hover-lgrey" id="notebooks-dropdown-button">
+                <i className="fa-solid fa-book"></i>
+                <div>Notebooks</div>
+            </div>
 
             {showNotebooks && (
                 <div id="notebooks-dropdown-list">
                     {Object.keys(notebooks).map(notebookId => (
-                        <div className="clickable dropdown-notebook" onClick={() => selectNotebook(notebookId)} key={notebookId}>{notebooks[notebookId].name}</div>
+                        <div className="clickable dropdown-notebook hover-lgrey" onClick={() => selectNotebook(notebookId)} key={notebookId}>
+                            <i className="fa-solid fa-book"></i>
+                            <div>{notebooks[notebookId].name}</div>
+                        </div>
                     ))}
-                    <div id="create-notebook-button" className="clickable" onClick={createNewNotebook}>
-                        New Notebook
+                    <div id="create-notebook-button" className="clickable hover-lgrey" onClick={createNewNotebook}>
+                        <i className="fa-solid fa-book-medical green"></i>
+                        <div>New Notebook</div>
                     </div>
                 </div>
             )}

@@ -53,17 +53,22 @@ const NotebookView = () => {
         history.push(`/notebooks/${notebookId}/pages/${pageId}`)
     }
 
+    const formatDate = (dateString) => {
+        const savedDate = new Date(dateString).toLocaleString();
+        return savedDate;
+    }
+
     return (
         <div id="notebookView-wrapper">
 
             <div id="notebook-details-wrapper">
                 <div id="notebook-details-name">{currentNotebook?.name}</div>
                 <div id="notebook-options">
-                    <div>{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
+                    <div id="notebook-page-count">{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
                     <div id="note-book-actions-container">
-                        <i onClick={createPage} className="fa-solid fa-file-circle-plus clickable" title="Add a page"></i>
-                        <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable" title="Delete notebook"></i>
-                        <i onClick={toggleEditView} className="fa-solid fa-wrench clickable" title="Edit notebook"></i>
+                        <i onClick={createPage} className="fa-solid fa-file-circle-plus clickable icon-button" title="Add a page"></i>
+                        <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable icon-button" title="Delete notebook"></i>
+                        <i onClick={toggleEditView} className="fa-solid fa-pencil clickable icon-button" title="Edit notebook"></i>
                     </div>
                 </div>
             </div>
@@ -71,13 +76,16 @@ const NotebookView = () => {
             {!showDeleteView && !showEditView && (
                 <div id="notebook-pages-list">
                     {Object.keys(notebookPages).map(pageId => (
-                        <div className="clickable dropdown-page" onClick={() => selectPage(pageId)} key={pageId}>{notebookPages[pageId].title}</div>
+                        <div className="clickable dropdown-page hover-lgrey" onClick={() => selectPage(pageId)} key={pageId}>
+                            <div className="notebook-page-title">{notebookPages[pageId].title}</div>
+                            <div className="notebook-page-card-date">Last edit {formatDate(notebookPages[pageId].updatedAt)}</div>
+                        </div>
                     ))}
                 </div>
             )}
 
             {showDeleteView && (
-                <DeleteNotebookView currentNotebook={currentNotebook} />
+                <DeleteNotebookView currentNotebook={currentNotebook} setShowDeleteView={setShowDeleteView} />
             )}
 
             {showEditView && (

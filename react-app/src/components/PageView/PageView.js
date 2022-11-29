@@ -52,8 +52,36 @@ const PageView = () => {
         setShowDeleteView(true);
     }
 
-    const toggleBookmark = () => {
-        setBookmarked(!bookmarked);
+    const toggleBookmarkTrue = async () => {
+        const editData = {
+            title,
+            content,
+            bookmarked: true
+        }
+
+        const response = await dispatch(TH_editPage(currentPage.id, editData));
+        if (response.errors) {
+            setShowDeleteView(false);
+            setErrors(response.errors);
+        } else {
+            history.push(`/notebooks/${response.notebookId}/pages/${response.id}`);
+        }
+    }
+
+    const toggleBookmarkFalse = async () => {
+        const editData = {
+            title,
+            content,
+            bookmarked: false
+        }
+
+        const response = await dispatch(TH_editPage(currentPage.id, editData));
+        if (response.errors) {
+            setShowDeleteView(false);
+            setErrors(response.errors);
+        } else {
+            history.push(`/notebooks/${response.notebookId}/pages/${response.id}`);
+        }
     }
 
     const savedDate = new Date(currentPage?.updatedAt).toLocaleString();
@@ -72,13 +100,14 @@ const PageView = () => {
                             onChange={(e) => setTitle(e.target.value)}
                         />
 
-                        {!bookmarked && (<i onClick={toggleBookmark} className="fa-regular fa-bookmark clickable" title="Add bookmark"></i>)}
-                        {bookmarked && (<i onClick={toggleBookmark} className="fa-solid fa-bookmark clickable" title="Remove bookmark"></i>)}
-
-                        <i onClick={toggleDeleteView} className="fa-solid fa-file-circle-minus clickable" title="Delete page"></i>
+                        <div id="page-options-container">
+                            {!bookmarked && (<i onClick={toggleBookmarkTrue} className="fa-regular fa-bookmark clickable icon-button" title="Add bookmark"></i>)}
+                            {bookmarked && (<i onClick={toggleBookmarkFalse} className="fa-solid fa-bookmark clickable icon-button" title="Remove bookmark"></i>)}
+                            <i onClick={toggleDeleteView} className="fa-solid fa-file-circle-minus clickable icon-button" title="Delete page"></i>
+                        </div>
                     </div>
                     <div id="save-page-container">
-                        <div onClick={editPage} className="clickable">Save</div>
+                        <div onClick={editPage} className="clickable" id="page-save-button">Save</div>
                         <div id="page-save-date">Last save {savedDate}</div>
                     </div>
                 </div>
@@ -115,7 +144,7 @@ const PageView = () => {
             </div>
 
             <div id="page-view-footer">
-                Page view footer placeholder
+
             </div>
 
         </div>

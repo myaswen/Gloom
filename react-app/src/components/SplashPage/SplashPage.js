@@ -17,10 +17,11 @@ const SplashPage = () => {
     return (
         <div id='splash-page-wrapper'>
             <div id="splash-info-wrapper">
-                <p>Placeholder for splash page info</p>
+                <h2>Welcome to Gloom!</h2>
+                <p>Gloom is a place to store all of your text based creations. From notes to novels, Gloom will keep you organized.</p>
             </div>
             {!showSignUp && <LoginCard setShowSignUp={setShowSignUp} />}
-            {showSignUp && <SignUpCard />}
+            {showSignUp && <SignUpCard setShowSignUp={setShowSignUp} />}
         </div>
     );
 };

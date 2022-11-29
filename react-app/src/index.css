@@ -1,6 +1,8 @@
 * {
-    color: brown;
+    /* color: #ffffff; */
+    color: #cccccc;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
 
     box-sizing: border-box;
 }
@@ -11,9 +13,46 @@ body,
     height: 100%;
     width: 100%;
     margin: 0;
-    background-color: #1b1b1b;
+    background-color: #000000;
 }
 
 .clickable:hover {
     cursor: pointer;
+}
+
+.hover-lgrey:hover {
+    background-color: #262626;
+}
+
+input,
+textarea {
+    background-color: #262626;
+}
+
+.green {
+    color: #357b33;
+}
+
+.red {
+    color: #932e2e;
+}
+
+.blue {
+    color: #4749d1;
+}
+
+.yellow {
+    color: goldenrod;
+}
+
+.purple {
+    color: purple;
+}
+
+.icon-button {
+    color: #909090;
+}
+
+.icon-button:hover {
+    font-size: 18px;
 }

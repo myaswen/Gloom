@@ -20,17 +20,33 @@ const SideMenu = ({ user }) => {
     return (
         <div id="sidemenu-wrapper">
 
+            <div id="sidemenu-top-items">
             <div id="profile-wrapper">
                 <div>{user.username}</div>
                 <div id="profile-options-wrapper">
                     {/* <i className="fa-solid fa-gear clickable"></i> */}
-                    <i onClick={onLogout} className="fa-solid fa-right-from-bracket clickable"></i>
+                    <i onClick={onLogout} className="fa-solid fa-right-from-bracket clickable" title="Log out"></i>
                 </div>
             </div>
 
             <div id="nav-wrapper">
-                <div onClick={() => history.push("/dashboard")} className="clickable">Home</div>
+                <div onClick={() => history.push("/dashboard")} className="clickable hover-lgrey" id="home-button">
+                    <i className="fa-solid fa-house"></i>
+                    <div>Home</div>
+                </div>
                 <NotebooksDropdown />
+            </div>
+            </div>
+
+            <div id="contact-links-wrapper">
+                <a href="https://github.com/myaswen" className="hover-lgrey">
+                    <i className="fa-brands fa-square-github"></i>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/max-yaswen-6b4132184/" className="hover-lgrey">
+                    <i className="fa-brands fa-linkedin"></i>
+                    LinkedIn
+                </a>
             </div>
 
         </div>

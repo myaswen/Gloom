@@ -1,3 +1,60 @@
 #edit-notebook-wrapper {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
+    border-bottom: 1px solid #3e3e3e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px;
+}
+
+#edit-notebook-wrapper input {
+    border: 1px solid #3e3e3e;
+    border-radius: 8px;
+    width: 280px;
+    padding-left: 8px;
+    padding-top: 22px;
+    padding-bottom: 8px;
+}
+
+#edit-notebook-wrapper label {
+    position: relative;
+    top: 20px;
+    left: 8px;
+    font-size: 12px;
+    color: #525252;
+}
+
+#edit-notebook-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#edit-notebook-buttons-container {
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#edit-notebook-submit-button {
+    text-align: center;
+    font-size: 12px;
+    background-color: #2e6b2c;
+    padding: 4px 16px 4px 16px;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+#edit-notebook-cancel-button {
+    text-align: center;
+    font-size: 12px;
+    background-color: #932e2e;
+    padding: 4px 16px 4px 16px;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+#notebook-error {
+    color: #932e2e;
+    font-size: 12px;
+    margin-top: 6px;
 }

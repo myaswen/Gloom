@@ -22,6 +22,15 @@ const LoginCard = ({ setShowSignUp }) => {
         }
     };
 
+    const handleDemoLogin = async () => {
+        const data = await dispatch(login("demo@aa.io", "password"));
+        if (data) {
+            setErrors(data);
+        } else {
+            history.push("/dashboard");
+        }
+    }
+
     const updateEmail = (e) => {
         setEmail(e.target.value);
     };
@@ -32,34 +41,37 @@ const LoginCard = ({ setShowSignUp }) => {
 
     return (
         <div id="login-form-wrapper">
+            <div id='login-logo-container'>
+                <i className="fa-solid fa-cloud-moon" id='login-logo-icon'></i>
+                <div id='login-logo-name'>Gloom</div>
+            </div>
             <form onSubmit={onLogin}>
-                <div>
+                <div className='login-form-input-container'>
                     <label htmlFor='email'>Email</label>
                     <input
                         name='email'
                         type='text'
-                        placeholder='Email'
                         value={email}
                         onChange={updateEmail}
                     />
                 </div>
-                <div>
+                <div className='login-form-input-container'>
                     <label htmlFor='password'>Password</label>
                     <input
                         name='password'
                         type='password'
-                        placeholder='Password'
                         value={password}
                         onChange={updatePassword}
                     />
-                    <button type='submit'>Login</button>
                 </div>
                 {Object.keys(errors).length > 0 && (
-                    <div>Authentication failed</div>
+                    <div className='login-error'>Authentication Failed</div>
                 )}
+                <button type='submit' id='login-button' className='clickable'>Log In</button>
             </form>
+            <button onClick={handleDemoLogin} id='demo-login-button' className='clickable'>Log In Demo</button>
             <p>Don't have an account?</p>
-            <div onClick={() => setShowSignUp(true)}>Create an account</div>
+            <div onClick={() => setShowSignUp(true)} className="clickable green">Create account</div>
         </div>
     );
 };
