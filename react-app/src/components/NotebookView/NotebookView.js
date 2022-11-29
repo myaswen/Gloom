@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 
 import "./NotebookView.css";
 import { TH_createNotebookPage, TH_getNotebookPages } from "../../store/page";
@@ -49,10 +49,6 @@ const NotebookView = () => {
         history.push(`/notebooks/${notebookId}/pages/${newNotebookPage.id}`);
     }
 
-    const selectPage = (pageId) => {
-        history.push(`/notebooks/${notebookId}/pages/${pageId}`)
-    }
-
     const formatDate = (dateString) => {
         const savedDate = new Date(dateString).toLocaleString();
         return savedDate;
@@ -76,10 +72,10 @@ const NotebookView = () => {
             {!showDeleteView && !showEditView && (
                 <div id="notebook-pages-list">
                     {Object.keys(notebookPages).map(pageId => (
-                        <div className="clickable dropdown-page hover-lgrey" onClick={() => selectPage(pageId)} key={pageId}>
+                        <NavLink activeClassName="active-page-link" className="clickable dropdown-page hover-lgrey" to={`/notebooks/${notebookId}/pages/${pageId}`} key={pageId}>
                             <div className="notebook-page-title">{notebookPages[pageId].title}</div>
                             <div className="notebook-page-card-date">Last edit {formatDate(notebookPages[pageId].updatedAt)}</div>
-                        </div>
+                        </NavLink>
                     ))}
                 </div>
             )}

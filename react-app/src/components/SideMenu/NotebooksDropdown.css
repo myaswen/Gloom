@@ -44,3 +44,7 @@
 #notebooks-dropdown-button > div {
     margin-left: 6px;
 }
+
+.active-notebook-link {
+    background-color: #262626;
+}

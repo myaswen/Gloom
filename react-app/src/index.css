@@ -29,6 +29,10 @@ textarea {
     background-color: #262626;
 }
 
+a {
+    text-decoration: none;
+}
+
 .green {
     color: #357b33;
 }

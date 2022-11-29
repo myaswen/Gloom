@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import "./NotebooksDropdown.css";
 import { TH_getNotebooks } from "../../store/notebook"
@@ -20,10 +20,6 @@ const NotebooksDropdown = () => {
         })();
     }, [dispatch]);
 
-    const selectNotebook = (notebookId) => {
-        history.push(`/notebooks/${notebookId}`);
-    }
-
     const createNewNotebook = async () => {
         const newNotebook = await dispatch(TH_createNotebook());
         history.push(`/notebooks/${newNotebook.id}`);
@@ -40,10 +36,10 @@ const NotebooksDropdown = () => {
             {showNotebooks && (
                 <div id="notebooks-dropdown-list">
                     {Object.keys(notebooks).map(notebookId => (
-                        <div className="clickable dropdown-notebook hover-lgrey" onClick={() => selectNotebook(notebookId)} key={notebookId}>
+                        <NavLink activeClassName="active-notebook-link" className="clickable dropdown-notebook hover-lgrey" to={`/notebooks/${notebookId}`} key={notebookId}>
                             <i className="fa-solid fa-book"></i>
                             <div>{notebooks[notebookId].name}</div>
-                        </div>
+                        </NavLink>
                     ))}
                     <div id="create-notebook-button" className="clickable hover-lgrey" onClick={createNewNotebook}>
                         <i className="fa-solid fa-book-medical green"></i>
