@@ -27,9 +27,11 @@
     padding: 16px;
 }
 
-/* #page-view-body {
-    border: 3px solid rgb(197, 166, 14);
-} */
+#page-view-body {
+    /* border: 3px solid rgb(197, 166, 14); */
+    height: 100%;
+    overflow: auto;
+}
 
 #page-view-footer {
     /* border: 3px solid rgb(24, 170, 175); */

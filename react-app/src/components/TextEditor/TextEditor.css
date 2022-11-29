@@ -1,0 +1,12 @@
+#quill-comp {
+    /* border: 1px solid red; */
+    height: 100%;
+}
+
+.ql-container {
+    height: calc(100% - 42px);
+}
+
+/* .ql-editor {
+
+} */
