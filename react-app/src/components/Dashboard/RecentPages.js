@@ -5,7 +5,13 @@ const RecentPages = ({ userPages, formatDate }) => {
     const history = useHistory();
 
     const pageIds = Object.keys(userPages);
-    const recentPageIds = pageIds.slice(pageIds.length - 10, pageIds.length);
+
+    let recentPageIds;
+    if (pageIds.length > 10) {
+        recentPageIds = pageIds.slice(pageIds.length - 10, pageIds.length);
+    } else {
+        recentPageIds = pageIds;
+    }
 
     const selectPage = (pageId) => {
         history.push(`/notebooks/${userPages[pageId].notebookId}/pages/${pageId}`);
