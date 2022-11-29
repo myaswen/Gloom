@@ -20,6 +20,7 @@ const SideMenu = ({ user }) => {
     return (
         <div id="sidemenu-wrapper">
 
+            <div id="sidemenu-top-items">
             <div id="profile-wrapper">
                 <div>{user.username}</div>
                 <div id="profile-options-wrapper">
@@ -34,6 +35,18 @@ const SideMenu = ({ user }) => {
                     <div>Home</div>
                 </div>
                 <NotebooksDropdown />
+            </div>
+            </div>
+
+            <div id="contact-links-wrapper">
+                <a href="https://github.com/myaswen" className="hover-lgrey">
+                    <i className="fa-brands fa-square-github"></i>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/max-yaswen-6b4132184/" className="hover-lgrey">
+                    <i className="fa-brands fa-linkedin"></i>
+                    LinkedIn
+                </a>
             </div>
 
         </div>

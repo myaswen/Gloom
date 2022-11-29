@@ -7,6 +7,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
 }
 
 #profile-wrapper {
@@ -36,4 +38,28 @@
 
 #home-button > div {
     margin-left: 6px;
+}
+
+#contact-links-wrapper {
+    /* border: 1px solid rgb(64, 77, 224); */
+    border-top: 1px solid #262626;
+    /* height: 100px;
+    min-height: 100px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#contact-links-wrapper > a {
+    padding-left: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+#contact-links-wrapper i {
+    /* color: goldenrod; */
+    margin-right: 8px;
+    font-size: 18px;
 }
