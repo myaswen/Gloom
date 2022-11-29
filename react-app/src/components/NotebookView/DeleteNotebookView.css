@@ -1,3 +1,58 @@
 #delete-notebook-view-wrapper {
-    border: 3px solid rgb(0, 17, 255);
+    /* border: 3px solid rgb(0, 17, 255); */
+    border-bottom: 1px solid #3e3e3e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px;
+}
+
+#delete-notebook-view-wrapper > p {
+    /* border: 1px solid red; */
+    text-align: center;
+    width: 100%;
+    margin: 8px;
+    overflow-wrap: break-word;
+}
+
+.delete-notebook-warning {
+    color: #932e2e;
+}
+
+#delete-notebook-view-wrapper input {
+    border: 1px solid #3e3e3e;
+    border-radius: 8px;
+    width: 280px;
+    padding: 8px;
+}
+
+#delete-notebook-buttons-container {
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}
+
+#delete-notebook-submit-button {
+    text-align: center;
+    font-size: 12px;
+    background-color: #2e6b2c;
+    padding: 4px 16px 4px 16px;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+#delete-notebook-cancel-button {
+    text-align: center;
+    font-size: 12px;
+    background-color: #932e2e;
+    padding: 4px 16px 4px 16px;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+#delete-notebook-error {
+    color: #932e2e;
+    font-size: 12px;
+    margin-top: 6px;
 }

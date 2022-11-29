@@ -85,7 +85,7 @@ const NotebookView = () => {
             )}
 
             {showDeleteView && (
-                <DeleteNotebookView currentNotebook={currentNotebook} />
+                <DeleteNotebookView currentNotebook={currentNotebook} setShowDeleteView={setShowDeleteView} />
             )}
 
             {showEditView && (

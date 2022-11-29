@@ -20,7 +20,6 @@ const EditNotebookView = ({ currentNotebook, setShowEditView }) => {
 
     return (
         <div id="edit-notebook-wrapper">
-            {/* <div>Enter a new notebook name:</div> */}
             <div id="edit-notebook-input-container">
                 <label>Notebook name</label>
                 <input
