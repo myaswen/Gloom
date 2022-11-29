@@ -24,6 +24,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 12px;
+    height: 32px;
 }
 
 #note-book-actions-container > i {

@@ -48,3 +48,11 @@ textarea {
 .purple {
     color: purple;
 }
+
+.icon-button {
+    color: #909090;
+}
+
+.icon-button:hover {
+    font-size: 18px;
+}

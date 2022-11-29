@@ -43,8 +43,6 @@
 #contact-links-wrapper {
     /* border: 1px solid rgb(64, 77, 224); */
     border-top: 1px solid #262626;
-    /* height: 100px;
-    min-height: 100px; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -59,7 +57,6 @@
 }
 
 #contact-links-wrapper i {
-    /* color: goldenrod; */
     margin-right: 8px;
     font-size: 18px;
 }

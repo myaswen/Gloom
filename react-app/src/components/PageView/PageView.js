@@ -101,9 +101,9 @@ const PageView = () => {
                         />
 
                         <div id="page-options-container">
-                            {!bookmarked && (<i onClick={toggleBookmarkTrue} className="fa-regular fa-bookmark clickable yellow" title="Add bookmark"></i>)}
-                            {bookmarked && (<i onClick={toggleBookmarkFalse} className="fa-solid fa-bookmark clickable yellow" title="Remove bookmark"></i>)}
-                            <i onClick={toggleDeleteView} className="fa-solid fa-file-circle-minus clickable red" title="Delete page"></i>
+                            {!bookmarked && (<i onClick={toggleBookmarkTrue} className="fa-regular fa-bookmark clickable icon-button" title="Add bookmark"></i>)}
+                            {bookmarked && (<i onClick={toggleBookmarkFalse} className="fa-solid fa-bookmark clickable icon-button" title="Remove bookmark"></i>)}
+                            <i onClick={toggleDeleteView} className="fa-solid fa-file-circle-minus clickable icon-button" title="Delete page"></i>
                         </div>
                     </div>
                     <div id="save-page-container">

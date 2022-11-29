@@ -25,7 +25,7 @@ const SideMenu = ({ user }) => {
                 <div>{user.username}</div>
                 <div id="profile-options-wrapper">
                     {/* <i className="fa-solid fa-gear clickable"></i> */}
-                    <i onClick={onLogout} className="fa-solid fa-right-from-bracket clickable"></i>
+                    <i onClick={onLogout} className="fa-solid fa-right-from-bracket clickable" title="Log out"></i>
                 </div>
             </div>
 
