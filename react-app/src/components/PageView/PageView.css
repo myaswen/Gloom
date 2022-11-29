@@ -66,14 +66,22 @@
 
 #edit-page-popup-container {
     position: relative;
-    background-color: rgb(99, 40, 105);
-    width: 400px;
+    width: 300px;
     font-size: 14px;
     top: 40px;
     padding: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #262626;
+    border: 1px solid #3e3e3e;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px 1px #121212;
+}
+
+#edit-page-popup-container > p {
+    color: #932e2e;
+    text-align: center;
 }
 
 #page-header-options-left {
