@@ -142,7 +142,7 @@ const PageView = () => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 /> */}
-                <TextEditor />
+                <TextEditor content={content} setContent={setContent} />
             </div>
 
             <div id="page-view-footer">
