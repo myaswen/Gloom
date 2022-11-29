@@ -4,7 +4,7 @@
     min-width: 780px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 94px auto 40px;
+    grid-template-rows: 99px auto 40px;
     background-color: #1a1a1a;
 }
 
