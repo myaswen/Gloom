@@ -74,6 +74,11 @@
     justify-content: space-between;
 }
 
+.dashboard-comp-page-card > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .dashboard-page-card-date {
     font-size: 12px;
     color: #909090;

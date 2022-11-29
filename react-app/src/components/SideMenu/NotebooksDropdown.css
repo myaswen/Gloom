@@ -30,6 +30,7 @@
 .dropdown-notebook > div {
     width: 200px;
     margin-left: 6px;
+    margin-right: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
