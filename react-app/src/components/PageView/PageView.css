@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 1px solid #3e3e3e;
 }
 
 #page-header-options-container {
@@ -26,12 +27,13 @@
     padding: 16px;
 }
 
-#page-view-body {
+/* #page-view-body {
     border: 3px solid rgb(197, 166, 14);
-}
+} */
 
 #page-view-footer {
-    border: 3px solid rgb(24, 170, 175);
+    /* border: 3px solid rgb(24, 170, 175); */
+    border-top: 1px solid #3e3e3e;
 }
 
 #save-page-container {
@@ -62,6 +64,14 @@
     width: 100%;
     height: 100%;
     resize: none;
+    padding: 18px;
+    border: none;
+}
+
+#page-edit-content-input:focus,
+#page-edit-title-input:focus {
+    outline: none;
+    border: 1px solid goldenrod;
 }
 
 #edit-page-popup-container {

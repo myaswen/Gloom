@@ -144,7 +144,7 @@ const PageView = () => {
             </div>
 
             <div id="page-view-footer">
-                Page view footer placeholder
+
             </div>
 
         </div>
