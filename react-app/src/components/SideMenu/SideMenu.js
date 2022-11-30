@@ -39,11 +39,11 @@ const SideMenu = ({ user }) => {
             </div>
 
             <div id="contact-links-wrapper">
-                <a href="https://github.com/myaswen" className="hover-lgrey">
+                <a href="https://github.com/myaswen" target="_blank" rel="noopener noreferrer" className="hover-lgrey">
                     <i className="fa-brands fa-square-github"></i>
                     GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/max-yaswen-6b4132184/" className="hover-lgrey">
+                <a href="https://www.linkedin.com/in/max-yaswen-6b4132184/" target="_blank" rel="noopener noreferrer" className="hover-lgrey">
                     <i className="fa-brands fa-linkedin"></i>
                     LinkedIn
                 </a>
