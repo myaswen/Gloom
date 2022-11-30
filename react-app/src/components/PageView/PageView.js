@@ -129,9 +129,11 @@ const PageView = () => {
 
                 {showDeleteView && (
                     <div id="edit-page-popup-container">
-                        <div>Are you sure you want to delete this page?</div>
-                        <div onClick={deletePage} className="clickable">Confirm</div>
-                        <div onClick={() => setShowDeleteView(false)} className="clickable">Cancel</div>
+                        <p>Are you sure you want to delete this page?</p>
+                        <div id="delete-page-button-container">
+                            <div onClick={deletePage} className="clickable" id="delete-page-submit-button">Delete</div>
+                            <div onClick={() => setShowDeleteView(false)} className="clickable" id="delete-page-cancel-button">Cancel</div>
+                        </div>
                     </div>
                 )}
 
