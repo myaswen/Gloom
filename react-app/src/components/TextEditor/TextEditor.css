@@ -1,0 +1,27 @@
+#quill-comp {
+    /* border: 1px solid red; */
+    height: 100%;
+}
+
+#quill-comp .ql-container {
+    height: calc(100% - 42px);
+    border: none;
+}
+
+#quill-comp .ql-toolbar {
+    border: none;
+    border-bottom: 1px solid #3e3e3e;
+
+}
+
+/* #quill-comp .ql-editor {
+
+} */
+
+#quill-comp .ql-editor:focus {
+    border: 1px solid goldenrod;
+}
+
+#quill-comp .ql-toolbar {
+    border-bottom: 1px solid #3e3e3e;
+}

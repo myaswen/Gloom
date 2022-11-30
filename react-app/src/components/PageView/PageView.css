@@ -4,7 +4,7 @@
     min-width: 780px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 94px auto 40px;
+    grid-template-rows: 99px auto 40px;
     background-color: #1a1a1a;
 }
 
@@ -27,9 +27,11 @@
     padding: 16px;
 }
 
-/* #page-view-body {
-    border: 3px solid rgb(197, 166, 14);
-} */
+#page-view-body {
+    /* border: 3px solid rgb(197, 166, 14); */
+    height: 100%;
+    overflow: auto;
+}
 
 #page-view-footer {
     /* border: 3px solid rgb(24, 170, 175); */
@@ -87,6 +89,7 @@
     border: 1px solid #3e3e3e;
     border-radius: 8px;
     box-shadow: 0px 0px 5px 1px #121212;
+    z-index: 99;
 }
 
 #edit-page-popup-container > p {

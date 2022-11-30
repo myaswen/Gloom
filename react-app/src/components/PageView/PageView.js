@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { TH_deletePage, TH_editPage } from "../../store/page";
+import TextEditor from "../TextEditor/TextEditor";
 
 import "./PageView.css";
 
@@ -24,6 +25,7 @@ const PageView = () => {
         setContent(currentPage?.content || "");
         setBookmarked(currentPage?.bookmarked || false)
         setErrors({});
+        setShowDeleteView(false);
     }, [currentPage]);
 
     const editPage = async () => {
@@ -136,11 +138,12 @@ const PageView = () => {
             </div>
 
             <div id="page-view-body">
-                <textarea
+                {/* <textarea
                     id="page-edit-content-input"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                />
+                /> */}
+                <TextEditor content={content} setContent={setContent} />
             </div>
 
             <div id="page-view-footer">
