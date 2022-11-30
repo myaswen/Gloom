@@ -59,6 +59,7 @@
     /* border: 3px solid purple; */
     display: flex;
     flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 .dashboard-comp-page-card {
@@ -82,4 +83,9 @@
 .dashboard-page-card-date {
     font-size: 12px;
     color: #909090;
+}
+
+.no-pages-card > p {
+    color: #909090;
+    font-size: 12px;
 }
