@@ -98,6 +98,7 @@ const PageView = () => {
                         <input
                             id="page-edit-title-input"
                             type="text"
+                            placeholder="Give your page a title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
