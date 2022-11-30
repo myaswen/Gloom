@@ -60,3 +60,9 @@
     margin-right: 8px;
     font-size: 18px;
 }
+
+#sidemenu-username-container {
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
