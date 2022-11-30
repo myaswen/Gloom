@@ -89,6 +89,7 @@
     border: 1px solid #3e3e3e;
     border-radius: 8px;
     box-shadow: 0px 0px 5px 1px #121212;
+    z-index: 99;
 }
 
 #edit-page-popup-container > p {

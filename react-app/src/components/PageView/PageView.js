@@ -25,6 +25,7 @@ const PageView = () => {
         setContent(currentPage?.content || "");
         setBookmarked(currentPage?.bookmarked || false)
         setErrors({});
+        setShowDeleteView(false);
     }, [currentPage]);
 
     const editPage = async () => {
