@@ -32,8 +32,8 @@ const EditNotebookView = ({ currentNotebook, setShowEditView }) => {
                 )}
             </div>
             <div id="edit-notebook-buttons-container">
-                <div onClick={editNotebook} className="clickable" id="edit-notebook-submit-button">Submit</div>
-                <div onClick={() => setShowEditView(false)} className="clickable" id="edit-notebook-cancel-button">Cancel</div>
+                <div onClick={editNotebook} className="clickable button-sink" id="edit-notebook-submit-button">Submit</div>
+                <div onClick={() => setShowEditView(false)} className="clickable button-sink" id="edit-notebook-cancel-button">Cancel</div>
             </div>
         </div>
     )

@@ -35,8 +35,8 @@ const DeleteNotebookView = ({ currentNotebook, setShowDeleteView }) => {
                 <div id="delete-notebook-error">{errors[0]}</div>
             )}
             <div id="delete-notebook-buttons-container">
-                <div onClick={deleteNotebook} className="clickable" id="delete-notebook-submit-button">Delete</div>
-                <div onClick={() => setShowDeleteView(false)} className="clickable" id="delete-notebook-cancel-button">Cancel</div>
+                <div onClick={deleteNotebook} className="clickable button-sink" id="delete-notebook-submit-button">Delete</div>
+                <div onClick={() => setShowDeleteView(false)} className="clickable button-sink" id="delete-notebook-cancel-button">Cancel</div>
             </div>
         </div>
     )
