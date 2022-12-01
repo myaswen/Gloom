@@ -14,14 +14,20 @@
 
 }
 
-/* #quill-comp .ql-editor {
-
-} */
-
 #quill-comp .ql-editor:focus {
     border: 1px solid goldenrod;
 }
 
 #quill-comp .ql-toolbar {
     border-bottom: 1px solid #3e3e3e;
+}
+
+/* Fixes font picker label overflow */
+#quill-comp .ql-font .ql-picker-label {
+    width: 120px;
+}
+
+/* Fixes heading picker label overflow */
+#quill-comp .ql-header .ql-picker-label {
+    width: 110px;
 }

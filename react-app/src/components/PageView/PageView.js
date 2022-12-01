@@ -40,7 +40,6 @@ const PageView = () => {
             setShowDeleteView(false);
             setErrors(response.errors);
         } else {
-            console.log("EDITED PAGE RETURNED: ", response);
             history.push(`/notebooks/${response.notebookId}/pages/${response.id}`);
         }
     }
