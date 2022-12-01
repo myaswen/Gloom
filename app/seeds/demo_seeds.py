@@ -134,7 +134,7 @@ def demo_seeds():
 
     scratchpad1 = Scratchpad(
         user_id = "1",
-        content = "Demo's scratchpad"
+        content = '''Welcome to Demo's account!\n\nWhile you're here, you could:\n\n- Check out some of Demo's notebooks.\n- Make a new notebook.\n- Leave a note on this scratch pad!\n'''
     )
 
     db.session.add(scratchpad1)
