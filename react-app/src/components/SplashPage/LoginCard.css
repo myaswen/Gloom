@@ -82,7 +82,7 @@
 }
 
 .login-error {
-    color: red;
+    color: #900000;
     font-size: 12px;
     margin-top: 16px;
 }

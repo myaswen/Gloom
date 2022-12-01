@@ -34,15 +34,15 @@ a {
 }
 
 .green {
-    color: #357b33;
+    color: green;
 }
 
 .red {
-    color: #932e2e;
+    color: #900000;
 }
 
 .blue {
-    color: #4749d1;
+    color: #045fbd;
 }
 
 .yellow {
@@ -58,7 +58,8 @@ a {
 }
 
 .icon-button:hover {
-    font-size: 18px;
+    /* font-size: 18px; */
+    color: #045fbd;
 }
 
 /* webkit scrollbar styles are NOT applied in all browsers */
@@ -70,5 +71,5 @@ a {
 ::-webkit-scrollbar-thumb {
     background: #909090;
     /* background: #6e6e6e; */
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }

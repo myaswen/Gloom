@@ -16,7 +16,7 @@
 }
 
 .delete-notebook-warning {
-    color: #932e2e;
+    color: #900000;
 }
 
 #delete-notebook-view-wrapper input {
@@ -41,7 +41,7 @@
 #delete-notebook-submit-button {
     text-align: center;
     font-size: 12px;
-    background-color: #2e6b2c;
+    background-color: green;
     padding: 4px 16px 4px 16px;
     border-radius: 4px;
     margin-top: 16px;
@@ -50,14 +50,14 @@
 #delete-notebook-cancel-button {
     text-align: center;
     font-size: 12px;
-    background-color: #932e2e;
+    background-color: #900000;
     padding: 4px 16px 4px 16px;
     border-radius: 4px;
     margin-top: 16px;
 }
 
 #delete-notebook-error {
-    color: #932e2e;
+    color: #900000;
     font-size: 12px;
     margin-top: 6px;
 }
