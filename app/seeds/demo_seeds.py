@@ -25,8 +25,14 @@ def demo_seeds():
         name = "Song Lyrics"
     )
 
+    notebook3 = Notebook(
+        user_id = "1",
+        name = "Bug Facts!"
+    )
+
     db.session.add(notebook1)
     db.session.add(notebook2)
+    db.session.add(notebook3)
     db.session.commit()
 
 
@@ -85,12 +91,41 @@ def demo_seeds():
         content = '''<p><em style="color: rgb(102, 163, 224);">[Guitar Introduction]</em></p><p><br></p><p><span style="color: rgb(178, 178, 0);">[Chorus]</span></p><p><span style="color: rgb(136, 136, 136);">Jolene, Jolene, Jolene, Jolene</span></p><p><span style="color: rgb(136, 136, 136);">I'm beggin' of you, please don't take my man</span></p><p><span style="color: rgb(136, 136, 136);">Jolene, Jolene, Jolene, Jolene</span></p><p><span style="color: rgb(136, 136, 136);">Please don't take him just because you can</span></p><p><br></p><p><span style="color: rgb(240, 102, 102);">[Verse 1]</span></p><p><span style="color: rgb(136, 136, 136);">Your beauty is beyond compare</span></p><p><span style="color: rgb(136, 136, 136);">With flaming locks of auburn hair</span></p><p><span style="color: rgb(136, 136, 136);">With ivory skin and eyes of emerald green</span></p><p><span style="color: rgb(136, 136, 136);">Your smile is like a breath of spring</span></p><p><span style="color: rgb(136, 136, 136);">Your voice is soft like summer rain</span></p><p><span style="color: rgb(136, 136, 136);">And I cannot compete with you, Jolene</span></p><p><br></p><p><span style="color: rgb(194, 133, 255);">[Verse 2]</span></p><p><span style="color: rgb(136, 136, 136);">He talks about you in his sleep</span></p><p><span style="color: rgb(136, 136, 136);">And there's nothing I can do to keep</span></p><p><span style="color: rgb(136, 136, 136);">From crying when he calls your name, Jolene</span></p><p><span style="color: rgb(136, 136, 136);">And I can easily understand</span></p><p><span style="color: rgb(136, 136, 136);">How you could easily take my man</span></p><p><span style="color: rgb(136, 136, 136);">But you don't know what he means to me, Jolene</span></p><p><br></p><p><span style="color: rgb(178, 178, 0);">[Chorus]</span></p><p><span style="color: rgb(136, 136, 136);">Jolene, Jolene, Jolene, Jolene</span></p><p><span style="color: rgb(136, 136, 136);">I'm begging of you, please don't take my man</span></p><p><span style="color: rgb(136, 136, 136);">Jolene, Jolene, Jolene, Jolene</span></p><p><span style="color: rgb(136, 136, 136);">Please don't take him just because you can</span></p><p><br></p><p><span style="color: rgb(102, 185, 102);">[Verse 3]</span></p><p><span style="color: rgb(136, 136, 136);">You could have your choice of men</span></p><p><span style="color: rgb(136, 136, 136);">But I could never love again</span></p><p><span style="color: rgb(136, 136, 136);">He's the only one for me, Jolene</span></p><p><span style="color: rgb(136, 136, 136);">I had to have this talk with you</span></p><p><span style="color: rgb(136, 136, 136);">My happiness depends on you</span></p><p><span style="color: rgb(136, 136, 136);">And whatever you decide to do, Jolene</span></p><p><br></p><p><span style="color: rgb(178, 178, 0);">[Chorus]</span></p><p><span style="color: rgb(136, 136, 136);">Jolene, Jolene, Jolene, Jolene</span></p><p><span style="color: rgb(136, 136, 136);">I'm begging of you, please don't take my man</span></p><p><span style="color: rgb(136, 136, 136);">Jolene, Jolene, Jolene, Jolene</span></p><p><span style="color: rgb(136, 136, 136);">Please don't take him even though you can</span></p><p><span style="color: rgb(136, 136, 136);">Jolene, Jolene</span></p>''',
     )
 
+    # [Pages for "Bug Facts!"]:
+
+    page7 = Page(
+        user_id = "1",
+        notebook_id = "3",
+        bookmarked = False,
+        title = "Cicada",
+        content = '''<p>The <strong>cicadas</strong> (/sɪˈkɑːdəz, -ˈkeɪ-/) are a superfamily, the <strong>Cicadoidea</strong>, of insects in the order <em>Hemiptera</em> (true bugs). They are in the suborder <em>Auchenorrhyncha</em>, along with smaller jumping bugs such as leafhoppers and froghoppers. The superfamily is divided into two families, the <em>Tettigarctidae</em>, with two species in Australia, and the <em>Cicadidae</em>, with more than 3,000 species described from around the world; many species remain undescribed.</p><p><br></p><p>Cicadas have prominent eyes set wide apart, short antennae, and membranous front wings. They have an exceptionally loud song, produced in most species by the rapid buckling and unbuckling of drumlike tymbals. The earliest known fossil <em>Cicadomorpha</em> appeared in the Upper Permian period; extant species occur all around the world in temperate to tropical climates. They typically live in trees, feeding on watery sap from xylem tissue, and laying their eggs in a slit in the bark. Most cicadas are cryptic. The vast majority of species are active during the day as adults, with some calling at dawn or dusk. Only a rare few species are known to be nocturnal.&nbsp;</p><p><br></p><p>One exclusively North American genus, <em>Magicicada</em> (the periodical cicadas), which spend most of their lives as underground nymphs, emerge in predictable intervals of 13 or 17 years, depending on the species and the location. The unusual duration and synchronization of their emergence may reduce the number of cicadas lost to predation, both by making them a less reliably available prey (so that any predator that evolved to depend on cicadas for sustenance might starve waiting for their emergence), and by emerging in such huge numbers that they will satiate any remaining predators before losing enough of their number to threaten their survival as a species.</p><p><br></p><p>The annual cicadas are species that emerge every year. Though these cicadas' life cycles can vary from 1–9 or more years as underground nymphs, their emergence above ground as adults is not synchronized, so some members of each species appear every year.</p>'''
+    )
+
+    page8 = Page(
+        user_id = "1",
+        notebook_id = "3",
+        bookmarked = False,
+        title = "Grasshopper",
+        content = '''<p><strong>Grasshoppers</strong> are a group of insects belonging to the suborder <em>Caelifera</em>. They are among what is possibly the most ancient living group of chewing herbivorous insects, dating back to the early <em>Triassic</em> around 250 million years ago.&nbsp;</p><p><br></p><p>Grasshoppers are typically ground-dwelling insects with powerful hind legs which allow them to escape from threats by leaping vigorously. As <em>hemimetabolous</em> insects, they do not undergo complete metamorphosis; they hatch from an egg into a nymph or "hopper" which undergoes five moults, becoming more similar to the adult insect at each developmental stage. The grasshopper hears through the tympanal organ which can be found in the first segment of the abdomen attached to the thorax; while its sense of vision is in the compound eyes, the change in light intensity is perceived in the simple eyes (ocelli). At high population densities and under certain environmental conditions, some grasshopper species can change color and behavior and form swarms. Under these circumstances, they are known as <em>locusts</em>.</p><p><br></p><p>Grasshoppers are plant-eaters, with a few species at times becoming serious pests of cereals, vegetables and pasture, especially when they swarm in the millions as <em>locusts</em> and destroy crops over wide areas. They protect themselves from predators by camouflage; when detected, many species attempt to startle the predator with a brilliantly-coloured wing-flash while jumping and (if adult) launching themselves into the air, usually flying for only a short distance. Other species such as the rainbow grasshopper have warning coloration which deters predators. Grasshoppers are affected by parasites and various diseases, and many predatory creatures feed on both nymphs and adults. The eggs are subject to attack by parasitoids and predators.&nbsp;</p>'''
+    )
+
+    page9 = Page(
+        user_id = "1",
+        notebook_id = "3",
+        bookmarked = False,
+        title = "Phasmatodea (Stick-Bug)",
+        content = '''<p>The <strong>Phasmatodea</strong> (also known as <strong>Phasmida</strong>, <strong>Phasmatoptera</strong> or <strong>Spectra</strong>) are an order of insects whose members are variously known as <strong>stick insects</strong>, <strong>stick-bugs</strong>, <strong>walking sticks</strong>, <strong>stick animals</strong>, or <strong>bug sticks</strong>. They are also occasionally referred to as <strong>Devil's darning needles</strong>, although this name is shared by both dragonflies and crane flies. They can be generally referred to as <strong>phasmatodeans</strong>, <strong>phasmids</strong>, or <strong>ghost insects</strong>, with phasmids in the family <em>Phylliidae</em> called <strong>leaf insects</strong>, <strong>leaf-bugs</strong>, <strong>walking leaves</strong>, or <strong>bug leaves</strong>. The group's name is derived from the Ancient Greek φάσμα <em>phasma</em>, meaning an apparition or phantom, referring to their resemblance to vegetation while in fact being animals. Their natural camouflage makes them difficult for predators to detect; still, many species have one of several secondary lines of defense in the form of startle displays, spines or toxic secretions. Stick insects from the genera <em>Phryganistria</em>, <em>Ctenomorpha</em>, and <em>Phobaeticus</em> include the world's longest insects.</p><p><br></p><p>Members of the order are found on all continents except Antarctica, but they are most abundant in the tropics and subtropics. They are herbivorous, with many species living unobtrusively in the tree canopy. They have an incomplete metamorphosis life cycle with three stages: egg, nymph and adult. Many phasmids are parthenogenic, and do not require fertilized eggs for female offspring to be produced. In hotter climates, they may breed all year round; in more temperate regions, the females lay eggs in the autumn before dying, and the new generation hatches in the spring. Some species have wings and can disperse by flying, while others are more restricted.&nbsp;</p>'''
+    )
+
     db.session.add(page1)
     db.session.add(page2)
     db.session.add(page3)
     db.session.add(page4)
     db.session.add(page5)
     db.session.add(page6)
+    db.session.add(page7)
+    db.session.add(page8)
+    db.session.add(page9)
     db.session.commit()
 
 
