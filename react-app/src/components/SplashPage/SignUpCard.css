@@ -26,6 +26,11 @@
     padding-bottom: 8px;
 }
 
+#signup-form-wrapper input:focus {
+    outline: none;
+    border: 1px solid goldenrod;
+}
+
 #signup-form-wrapper label {
     position: relative;
     top: 20px;
