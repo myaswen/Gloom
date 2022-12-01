@@ -15,6 +15,8 @@
     /* border: 3px solid gold; */
     margin: 24px 12px 12px 24px;
     min-width: 400px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 #dashboard-pages-wrapper {
@@ -22,6 +24,8 @@
     /* border: 3px solid rgb(138, 194, 27); */
     margin: 12px 12px 24px 24px;
     min-width: 400px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 #dashboard-scratchpad-wrapper {

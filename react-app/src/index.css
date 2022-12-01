@@ -60,3 +60,15 @@ a {
 .icon-button:hover {
     font-size: 18px;
 }
+
+/* webkit scrollbar styles are NOT applied in all browsers */
+
+::-webkit-scrollbar {
+    background: #3e3e3e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #909090;
+    /* background: #6e6e6e; */
+    border-radius: 8px;
+}
