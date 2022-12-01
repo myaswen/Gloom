@@ -1,7 +1,6 @@
 #dashboard-wrapper {
     width: 100%;
     height: 100%;
-    /* border: 3px solid purple; */
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -12,7 +11,6 @@
 
 #dashboard-bookmarks-wrapper {
     grid-area: bookmarks;
-    /* border: 3px solid gold; */
     margin: 24px 12px 12px 24px;
     min-width: 400px;
     border-radius: 8px;
@@ -21,7 +19,6 @@
 
 #dashboard-pages-wrapper {
     grid-area: pages;
-    /* border: 3px solid rgb(138, 194, 27); */
     margin: 12px 12px 24px 24px;
     min-width: 400px;
     border-radius: 8px;
@@ -30,13 +27,11 @@
 
 #dashboard-scratchpad-wrapper {
     grid-area: scratchpad;
-    /* border: 3px solid rgb(29, 29, 158); */
     margin: 24px 24px 24px 12px;
     min-width: 400px;
 }
 
 .dashboard-comp-wrapper {
-    /* border: 3px solid blue; */
     width: 100%;
     height: 100%;
     display: grid;
@@ -50,7 +45,6 @@
 }
 
 .dashboard-comp-header {
-    /* border: 3px solid goldenrod; */
     display: flex;
     align-items: center;
 }
@@ -60,14 +54,12 @@
 }
 
 .dashboard-comp-page-card-wrapper {
-    /* border: 3px solid purple; */
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
 
 .dashboard-comp-page-card {
-    /* border: 3px solid palevioletred; */
     width: 200px;
     margin: 8px;
     background-color: #262626;

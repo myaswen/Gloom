@@ -1,5 +1,4 @@
 #delete-notebook-view-wrapper {
-    /* border: 3px solid rgb(0, 17, 255); */
     border-bottom: 1px solid #3e3e3e;
     display: flex;
     flex-direction: column;
@@ -8,7 +7,6 @@
 }
 
 #delete-notebook-view-wrapper > p {
-    /* border: 1px solid red; */
     text-align: center;
     width: 100%;
     margin: 8px;
@@ -35,7 +33,6 @@
     width: 160px;
     display: flex;
     justify-content: space-between;
-    /* border: 1px solid red; */
 }
 
 #delete-notebook-submit-button {

@@ -1,9 +1,7 @@
 * {
-    /* color: #ffffff; */
     color: #cccccc;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px;
-
     box-sizing: border-box;
 }
 
@@ -58,7 +56,6 @@ a {
 }
 
 .icon-button:hover {
-    /* font-size: 18px; */
     color: #045fbd;
 }
 
@@ -74,6 +71,4 @@ a {
 
 ::-webkit-scrollbar-thumb {
     background: #909090;
-    /* background: #6e6e6e; */
-    /* border-radius: 8px; */
 }

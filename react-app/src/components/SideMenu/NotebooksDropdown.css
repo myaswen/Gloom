@@ -1,13 +1,4 @@
-/* #notebooks-dropdown-wrapper {
-    border: 1px solid rgb(34, 173, 62);
-} */
-
-/* #notebooks-dropdown-list {
-
-} */
-
 #create-notebook-button {
-    /* border: 1px solid rgb(157, 34, 173); */
     display: flex;
     align-items: center;
     padding: 4px 4px 4px 30px;
@@ -19,7 +10,6 @@
 }
 
 .dropdown-notebook {
-    /* border: 1px solid green; */
     white-space: nowrap;
     overflow: hidden;
     padding: 4px 4px 4px 30px;

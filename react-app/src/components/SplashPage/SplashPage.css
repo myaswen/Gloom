@@ -1,5 +1,4 @@
 #splash-page-wrapper {
-    /* border: 1px solid blue; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +7,6 @@
 }
 
 #splash-info-wrapper {
-    /* border: 1px solid green; */
     background-color: #1a1a1a;
     margin: 20px;
     width: 400px;
