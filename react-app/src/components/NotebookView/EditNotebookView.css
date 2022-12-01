@@ -16,6 +16,11 @@
     padding-bottom: 8px;
 }
 
+#edit-notebook-wrapper input:focus {
+    outline: none;
+    border: 1px solid goldenrod;
+}
+
 #edit-notebook-wrapper label {
     position: relative;
     top: 20px;

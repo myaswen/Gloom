@@ -6,12 +6,12 @@ import "./SignUpCard.css";
 
 const SignUpCard = ({ setShowSignUp }) => {
     const history = useHistory();
+    const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
-    const dispatch = useDispatch();
 
     const onSignUp = async (e) => {
         e.preventDefault();
@@ -46,7 +46,9 @@ const SignUpCard = ({ setShowSignUp }) => {
     return (
         <div id="signup-form-wrapper">
             <div id='signup-logo-container'>
-                <i className="fa-solid fa-cloud-moon" id='signup-logo-icon'></i>
+                {Object.keys(errors).length === 0 && (
+                    <i className="fa-solid fa-cloud-moon" id='signup-logo-icon'></i>
+                )}
                 <div id='signup-logo-name'>Gloom</div>
             </div>
             <form onSubmit={onSignUp}>
@@ -82,6 +84,9 @@ const SignUpCard = ({ setShowSignUp }) => {
                         onChange={updatePassword}
                         value={password}
                     ></input>
+                    {errors.password && (
+                        <div className='signup-error'>{errors.password[0]}</div>
+                    )}
                 </div>
                 <div className='signup-form-input-container'>
                     <label>Repeat Password</label>

@@ -26,6 +26,11 @@
     padding: 8px;
 }
 
+#delete-notebook-view-wrapper input:focus {
+    outline: none;
+    border: 1px solid goldenrod;
+}
+
 #delete-notebook-buttons-container {
     width: 160px;
     display: flex;
