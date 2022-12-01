@@ -25,6 +25,14 @@ const BookmarkedPages = ({ userPages, formatDate }) => {
                         <div className="dashboard-page-card-date">{formatDate(userPages[pageId].updatedAt)}</div>
                     </div>
                 ))}
+                {bookmarkedPageIds.length === 0 && (
+                    <div className="dashboard-comp-page-card">
+                        <div className="no-pages-card">
+                            <p>All of your bookmarked pages will show up here!</p>
+                            <p>You can bookmark a page with the bookmark icon on the left of the edit menu when you view a page.</p>
+                        </div>
+                    </div>
+                )}
             </div>
 
         </div>

@@ -31,6 +31,14 @@ const RecentPages = ({ userPages, formatDate }) => {
                         <div className="dashboard-page-card-date">{formatDate(userPages[pageId].updatedAt)}</div>
                     </div>
                 ))}
+                {recentPageIds.length === 0 && (
+                    <div className="dashboard-comp-page-card">
+                        <div className="no-pages-card">
+                            <p>Recently created pages will show up in this menu!</p>
+                            <p>Create a notebook in the side menu to get started.</p>
+                        </div>
+                    </div>
+                )}
             </div>
 
         </div>

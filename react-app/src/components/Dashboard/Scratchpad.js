@@ -66,6 +66,7 @@ const Scratchpad = () => {
             <div id="scratchpad-input-container">
                 <textarea
                     id="scratchpad-edit-content-input"
+                    placeholder="A place for quick thoughts..."
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
