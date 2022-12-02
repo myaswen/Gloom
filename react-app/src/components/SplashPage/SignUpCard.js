@@ -16,7 +16,7 @@ const SignUpCard = ({ setShowSignUp }) => {
     const onSignUp = async (e) => {
         e.preventDefault();
         if (password === repeatPassword) {
-            const data = await dispatch(signUp(username, email, password));
+            const data = await dispatch(signUp(username, email.toLowerCase(), password));
             if (data) {
                 setErrors(data);
             } else {
@@ -100,7 +100,7 @@ const SignUpCard = ({ setShowSignUp }) => {
                         <div className='signup-error'>{errors.password[0]}</div>
                     )}
                 </div>
-                <button type='submit' id='signup-button' className='clickable'>Sign Up</button>
+                <button type='submit' id='signup-button' className='clickable button-sink'>Sign Up</button>
             </form>
             <p>Already have an account?</p>
             <div onClick={() => setShowSignUp(false)} className="clickable green">Log In</div>

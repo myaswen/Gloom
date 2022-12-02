@@ -14,7 +14,7 @@ const LoginCard = ({ setShowSignUp }) => {
 
     const onLogin = async (e) => {
         e.preventDefault();
-        const data = await dispatch(login(email, password));
+        const data = await dispatch(login(email.toLowerCase(), password));
         if (data) {
             setErrors(data);
         } else {
@@ -67,9 +67,9 @@ const LoginCard = ({ setShowSignUp }) => {
                 {Object.keys(errors).length > 0 && (
                     <div className='login-error'>Authentication Failed</div>
                 )}
-                <button type='submit' id='login-button' className='clickable'>Log In</button>
+                <button type='submit' id='login-button' className='clickable button-sink'>Log In</button>
             </form>
-            <button onClick={handleDemoLogin} id='demo-login-button' className='clickable'>Log In Demo</button>
+            <button onClick={handleDemoLogin} id='demo-login-button' className='clickable button-sink'>Log In Demo</button>
             <p>Don't have an account?</p>
             <div onClick={() => setShowSignUp(true)} className="clickable green">Create account</div>
         </div>

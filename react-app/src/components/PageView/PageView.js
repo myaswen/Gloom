@@ -40,7 +40,6 @@ const PageView = () => {
             setShowDeleteView(false);
             setErrors(response.errors);
         } else {
-            console.log("EDITED PAGE RETURNED: ", response);
             history.push(`/notebooks/${response.notebookId}/pages/${response.id}`);
         }
     }
@@ -105,13 +104,13 @@ const PageView = () => {
                         />
 
                         <div id="page-options-container">
-                            {!bookmarked && (<i onClick={toggleBookmarkTrue} className="fa-regular fa-bookmark clickable icon-button" title="Add bookmark"></i>)}
-                            {bookmarked && (<i onClick={toggleBookmarkFalse} className="fa-solid fa-bookmark clickable icon-button" title="Remove bookmark"></i>)}
-                            <i onClick={toggleDeleteView} className="fa-solid fa-file-circle-minus clickable icon-button" title="Delete page"></i>
+                            {!bookmarked && (<i onClick={toggleBookmarkTrue} className="fa-regular fa-bookmark clickable icon-button button-sink" title="Add bookmark"></i>)}
+                            {bookmarked && (<i onClick={toggleBookmarkFalse} className="fa-solid fa-bookmark clickable icon-button button-sink" title="Remove bookmark"></i>)}
+                            <i onClick={toggleDeleteView} className="fa-solid fa-file-circle-minus clickable icon-button button-sink" title="Delete page"></i>
                         </div>
                     </div>
                     <div id="save-page-container">
-                        <div onClick={editPage} className="clickable" id="page-save-button">Save</div>
+                        <div onClick={editPage} className="clickable button-sink" id="page-save-button">Save</div>
                         <div id="page-save-date">Last save {savedDate}</div>
                     </div>
                 </div>
@@ -133,8 +132,8 @@ const PageView = () => {
                     <div id="edit-page-popup-container">
                         <p>Are you sure you want to delete this page?</p>
                         <div id="delete-page-button-container">
-                            <div onClick={deletePage} className="clickable" id="delete-page-submit-button">Delete</div>
-                            <div onClick={() => setShowDeleteView(false)} className="clickable" id="delete-page-cancel-button">Cancel</div>
+                            <div onClick={deletePage} className="clickable button-sink" id="delete-page-submit-button">Delete</div>
+                            <div onClick={() => setShowDeleteView(false)} className="clickable button-sink" id="delete-page-cancel-button">Cancel</div>
                         </div>
                     </div>
                 )}

@@ -62,9 +62,9 @@ const NotebookView = () => {
                 <div id="notebook-options">
                     <div id="notebook-page-count">{notebookPageCount} {notebookPageCount === 1 ? "page" : "pages"}</div>
                     <div id="note-book-actions-container">
-                        <i onClick={createPage} className="fa-solid fa-file-circle-plus clickable icon-button" title="Add a page"></i>
-                        <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable icon-button" title="Delete notebook"></i>
-                        <i onClick={toggleEditView} className="fa-solid fa-pencil clickable icon-button" title="Edit notebook"></i>
+                        <i onClick={createPage} className="fa-solid fa-file-circle-plus clickable icon-button button-sink" title="Add a page"></i>
+                        <i onClick={toggleDeleteView} className="fa-solid fa-trash-can clickable icon-button button-sink" title="Delete notebook"></i>
+                        <i onClick={toggleEditView} className="fa-solid fa-pencil clickable icon-button button-sink" title="Edit notebook"></i>
                     </div>
                 </div>
             </div>

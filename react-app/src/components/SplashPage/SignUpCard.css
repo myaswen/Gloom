@@ -1,5 +1,4 @@
 #signup-form-wrapper {
-    /* border: 1px solid red; */
     background-color: #1a1a1a;
     margin: 20px;
     min-width: 400px;
@@ -73,7 +72,7 @@
 }
 
 .signup-error {
-    color: red;
+    color: #900000;
     font-size: 12px;
     margin-top: 4px;
 }
