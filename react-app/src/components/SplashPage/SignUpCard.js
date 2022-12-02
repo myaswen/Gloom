@@ -16,7 +16,7 @@ const SignUpCard = ({ setShowSignUp }) => {
     const onSignUp = async (e) => {
         e.preventDefault();
         if (password === repeatPassword) {
-            const data = await dispatch(signUp(username, email, password));
+            const data = await dispatch(signUp(username, email.toLowerCase(), password));
             if (data) {
                 setErrors(data);
             } else {
