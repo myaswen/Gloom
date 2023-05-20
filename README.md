@@ -7,18 +7,11 @@
 4. [Current Features](#current-features)
 5. [Local Run Instructions](#local-run-instructions)
 6. [Future Features](#future-features)
-7. [Contact](#contact)
 
 There's additional technical info about the app in the [wiki](https://github.com/myaswen/Gloom/wiki)!
 
 ## Project Summary
 Gloom is a full stack, stateful web-app that draws style and function inspiration from [Evernote.com](https://www.evernote.com/). The current build of Gloom offers **notebooks** and **pages** as the two core features of functionality available to users. A more detailed breakdown of these core features and other features can be found in the [Current Features](#current-features) section.
-
-Check out the live site with this [link](https://gloom.onrender.com/)! Or copy the URL below:
-
-    gloom.onrender.com
-
-*Render can sometimes take a minute to initially load the site.
 
 ## Technologies Used
 
@@ -130,6 +123,3 @@ npm start
 * Users can view their tasks in a list.
 * Users can mark a task as complete.
 * Users can delete a task.
-
-## Contact
-    myaswen@gmail.com
